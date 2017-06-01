@@ -1,0 +1,205 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The following comments were written in Portuguese, because this 
+% template applies only for School of Technology at University 
+% of Campinas, Brazil.
+%
+% Este é um modelo Latex para monografias de Trabalhos de Conclusão 
+% de Curso (TCC) na graduação, monografias de Mestrado e Teses de 
+% doutorado da Faculdade de Tecnologia (FT) da Universidade 
+% Estadual de Campinas (UNICAMP).
+%
+% Esse modelo e seu respectivo arquivo de classe de documento 
+% foram adaptado do modelo de teses e dissertações do 
+% Instituto de Computação da UNICAMP.
+%
+% Autor: André Leon Sampaio Gradvohl, Dr.
+% Email:        gradvohl@ft.unicamp.br
+% Lattes CV:    http://lattes.cnpq.br/9343261628675642
+% 
+% Última versão: 01/junho/2017
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Escolha: Portugues ou Ingles ou Espanhol.
+% Para a versão final do texto, acrescente a palavra "Final",
+% como na segunda linha abaixo da próxima.
+%\documentclass[Portugues]{tese-FT}
+\documentclass[Portugues,Final]{tese-FT}
+%\documentclass[Ingles]{tese-FT}
+%\documentclass[Espanhol,Final]{tese-FT}
+
+% Para acrescentar comentários ao PDF descomente:
+\usepackage
+%  [pdfauthor={nome do autor},
+%   pdftitle={titulo},
+%   pdfkeywords={palavra-chave, palavra-chave},
+%   pdfproducer={Latex with hyperref},
+%   pdfcreator={pdflatex}]
+{hyperref}
+
+%Mantenha o pacote a seguir para citações no formato ABNT
+\usepackage[alf]{abntex2cite}
+
+%Mantenha o pacote a seguir para incluir a lista de símbolos.
+\usepackage{nomencl}
+\makenomenclature
+
+%O pacote a seguir gera um dummy text. Elimine a linha quando
+% for editar seu texto.
+\usepackage{lipsum}
+
+\begin{document}
+
+% Escolha entre autor ou autora:
+\autor{Nome do Autor}
+%\autora{Nome da Autora}
+
+% Sempre deve haver um título em português:
+\titulo{Título da Dissertação ou Tese em Português}
+
+% Se a língua for o inglês ou o espanhol defina:
+%\title{The Dissertation or Thesis Title in English or Spanish for FT}
+
+% Escolha entre orientador ou orientadora e inclua os títulos:
+\orientador{Prof. Dr. Nome do Orientador}
+%\orientadora{Profa. Dra. Nome da Orientadora}
+
+% Escolha entre coorientador ou coorientadora, se houver, 
+% e inclua os títulos:
+%\coorientador{Prof. Dr. Eng. Lic. Nome do Co-Orientador}
+%\coorientadora{Prof. Dra. Eng. Lic. Nome da Co-Orientadora}
+
+% Escolha entre uma das quatro opções a seguir (comente as demais):
+\bsi         % para Trabalho de Conclusão de Curso em BSI
+%\tads       % para Trabalho de Conclusão de Curso em TADS
+%\mestrado   % para Dissertação de Mestrado em Tecnologia
+%\doutorado  % para Tese de Doutorado em Tecnologia
+
+% Se houve cotutela, defina:
+%\cotutela{Universidade Nova de Plutão}
+
+%Defina a data da defesa no formato {Dia}{Mês}{Ano}
+\datadadefesa{16}{03}{2017}
+
+% Para a versão final defina:
+% Repita o nome do Orientador(a) no primeiro avaliador
+\avaliadorA{Prof. Dr. Nome do Orientador}{FT/UNICAMP}
+\avaliadorB{Profa. Dra. Segunda Avaliadora}{Instituição da segunda avaliadora}
+\avaliadorC{Dr. Terceiro Avaliador}{Instituição do terceiro avaliador}
+%\avaliadorD{Prof. Dr. Quarto Avaliador}{Instituição do quarto avaliador}
+%\avaliadorE{Prof. Dr. Quinto Avaliador}{Instituição do quinto avaliador}
+%\avaliadorF{Prof. Dr. Sexto Avaliador}{Instituição do sexto avaliador}
+%\avaliadorG{Prof. Dr. Sétimo Avaliador}{Instituição do sétimo avaliador}
+%\avaliadorH{Prof. Dr. Oitavo Avaliador}{Instituição do oitavo avaliador}
+
+
+% Para incluir a ficha catalográfica em PDF na versão final, 
+% copie o arquivo PDF, descomente e ajuste a linha a seguir:
+%\fichacatalografica{arquivo.pdf}
+
+% Este comando deve ficar aqui:
+\paginasiniciais
+
+% Se houver dedicatória, descomente a linha a seguir:
+%\prefacesection{Isso é um teste}
+%A dedicatória deve ocupar uma única página.
+%
+%
+% Se houver epígrafe, descomente e edite as linhas a seguir:
+% \begin{epigrafe}
+% {\it
+% Vita brevis,\\
+% ars longa,\\
+% occasio praeceps,\\
+% experimentum periculosum,\\
+% iudicium difficile.}
+%
+% \hfill (Hippocrates)
+% \end{epigrafe}
+%
+%
+% Agradecimentos ou Acknowledgements ou Agradecimientos
+\prefacesection{Agradecimentos}
+Os agradecimentos devem ocupar uma única página.
+
+% Sempre deve haver um resumo em português:
+\begin{resumo}
+O resumo deve ter no máximo 500 palavras e deve ocupar uma única página.
+\end{resumo}
+
+
+% Sempre deve haver um abstract:
+\begin{abstract}
+The abstract must have at most 500 words and must fit in a single page.
+\end{abstract}
+
+% Se houver um resumo em espanhol, descomente as linhas a seguir:
+%\begin{resumen}
+% A mesma regra aplica-se.
+%\end{resumen}
+
+% A lista de figuras:
+\listoffigures
+
+% A lista de tabelas:
+\listoftables
+
+% A lista de abreviações e siglas é opcional:
+% \prefacesection{Lista de Abreviações e Siglas}
+
+% A lista de símbolos é opcional:
+% \prefacesection{Lista de Símbolos}
+
+% Quem usa o pacote nomencl para abreviaturas pode incluir:
+\renewcommand{\nomname}{Lista de Abreviações e Siglas}
+\printnomenclature[3cm]
+
+% O sumário vem aqui:
+\tableofcontents
+
+% E esta linha deve ficar bem aqui:
+\fimdaspaginasiniciais
+
+% O corpo da dissertação ou tese começa aqui:
+%
+% O comando a seguir inclui o arquivo introducao.tex
+% que contém o capítulo de Introdução. 
+% Detalhe: não precisa incluir a extensão .tex
+\include{introducao}
+
+% O comando a seguir inclui o arquivo levantamento.tex
+% que contém o capítulo de levantamento bibliográfico. 
+% Detalhe: não precisa incluir a extensão .tex
+\include{levantamento}
+
+% O comando a seguir inclui o arquivo desenvolvimento.tex
+% que contém o capítulo de desenvolvimento. 
+% Detalhe: não precisa incluir a extensão .tex
+\include{desenvolvimento}
+
+% O comando a seguir inclui o arquivo conclusoes.tex
+% que contém o capítulo de conclusoes. 
+% Detalhe: não precisa incluir a extensão .tex
+\include{conclusoes}
+
+
+% Os comandos para as referências bibliográficas estão a seguir
+% Estilo de bibliografia. Nesse caso é o estilo alfabético.
+\bibliographystyle{abntex2-alf}
+% As referências bibliográficas estão no arquivo 
+% bibliografia.bib . Nesse caso, coloque o arquivo sem a
+% extensão .bib.
+\bibliography{bibliografia}
+
+% Os anexos, se houver, vêm depois das referências:
+\appendix
+\chapter{Primeiro Apêndice}
+% O comando a seguir gera um "dummy text". 
+% Elimine-o quando escrever sua dissertação.
+\lipsum[9]
+
+\chapter{Segundo  Apêndice}
+% O comando a seguir gera um "dummy text". 
+% Elimine-o quando escrever sua dissertação.
+\lipsum[10]
+
+\end{document}
