@@ -3,7 +3,7 @@ Este é um modelo Latex para monografias de Trabalhos de Conclusão de Curso (TC
 
 Esse modelo e seu respectivo arquivo de classe de documento foram adaptado do modelo de teses e dissertações do Instituto de Computação da UNICAMP.
 
-A utilização desse modelo é livre e está de acordo com a última versão das **Normas para impressão de teses/dissertações da UNICAMP (CPG 001/2015)**
+A utilização desse modelo é livre e está de acordo com a última versão das **Normas para impressão de teses/dissertações da UNICAMP (CPG 001/2015)**.
 
 Você também poderá utilizar esse modelo diretamente no [Overleaf](https://www.overleaf.com), um site que permite a edição de textos no LaTeX de forma bem prática.
 
@@ -18,6 +18,8 @@ Os arquivos que você deve utilizar são os seguintes:
 3. Todos os arquivos .tex podem ser utilizados normalmente. Nesse modelo, cada capítulo ficou em um arquivo diferente. Isso acelera a compilação e permite uma organização maior dos tópicos.
 
 Observe :eyes: que existe um diretório **figuras**. Nele você pode adicionar todas as figuras do seu texto. 
+
+se você baixar o modelo tese-FT deste repositório no GitHub, não esqueça de verificar se o LaTeX e todos os pacotes (*packages*) que o modelo depende estão instalados na sua máquina, especialmente o **abntex2cite.sty**.
 
 Quaisquer dúvidas podem ser sanadas pelo autor no email :email: a seguir.
 
