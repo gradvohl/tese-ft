@@ -25,7 +25,7 @@ Quaisquer dúvidas podem ser sanadas pelo autor no email :email: a seguir.
 
 Autor: **André Leon Sampaio Gradvohl, Dr.**
 
-Email:        gradvohl@ft.unicamp.br
+Email:        gradvohl@ft.unicamp.br  ou gradvohl@ieee.org
 
 Lattes CV:    http://lattes.cnpq.br/9343261628675642
 
