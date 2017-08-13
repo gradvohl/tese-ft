@@ -30,3 +30,8 @@ Email:        gradvohl@ft.unicamp.br  ou gradvohl@ieee.org
 Lattes CV:    http://lattes.cnpq.br/9343261628675642
 
 Última versão: 01/junho/2017
+
+Esse software está em um repositório indexado pelo Zenodo e pode ser acessado com o DOI a seguir 
+
+[![DOI](https://zenodo.org/badge/93098251.svg)](https://zenodo.org/badge/latestdoi/93098251)
+
