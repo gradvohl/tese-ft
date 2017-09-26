@@ -15,7 +15,7 @@
 % Email:        gradvohl@ft.unicamp.br
 % Lattes CV:    http://lattes.cnpq.br/9343261628675642
 % 
-% Última versão: 16/Março/2017
+% Última versão: 25/Setembro/2017
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
@@ -86,12 +86,12 @@
   \gdef\@textoaviso{\relax}
   \if\@autora\relax
   \gdef\@degnamept{Bacharel em Sistemas de Informação}
-  \gdef\@degnamees{Bachelor in Information Sciences}
+  \gdef\@degnamees{Licenciatura en Sistemas de Información}
   \else
   \gdef\@degnamept{Bacharela em Sistemas de Informação}
   \gdef\@degnamees{Bacharela}
   \fi
-  \gdef\@degnameen{Doctor}
+  \gdef\@degnameen{Bachelor in Information Sciences}
   \gdef\@monopt{Dissertação}
   \gdef\@monoes{Dissertacíon}
   \gdef\@monoen{Monograph}
@@ -107,41 +107,73 @@
   \gdef\@degnamept{Tecnóloga em Análise e Desenvolvimento de Sistemas}
   \gdef\@degnamees{Tecnóloga}
   \fi
-  \gdef\@degnameen{Technologist}
+  \gdef\@degnameen{Technologist in Systems Analysis and Development}
   \gdef\@monopt{Dissertação}
   \gdef\@monoes{Dissertacíon}
   \gdef\@monoen{Monograph}
 }
 %%%%
+\gdef\qualificacaoMestrado{
+%added 
+  \gdef\@textoaviso{\clearpage \cathpage}
+  \if\@autora\relax
+  \gdef\@degnamept{Mestre em Tecnologia}
+  \gdef\@degnamees{Maestro en Tecnología}
+  \else
+  \gdef\@degnamept{Mestra em Tecnologia}
+  \gdef\@degnamees{Maestra en Tecnología}
+  \fi
+  \gdef\@degnameen{Master of Science in Technology}
+  \gdef\@monopt{Monografia de qualificação}
+  \gdef\@monoes{Monografía de calificación}
+  \gdef\@monoen{Qualification monograph}
+}
+%%%%
+\gdef\qualificacaoDoutorado{
+%added 
+  \gdef\@textoaviso{\clearpage \cathpage}
+  \if\@autora\relax
+  \gdef\@degnamept{Doutor em Tecnologia}
+  \gdef\@degnamees{Doctor en Tecnología}
+  \else
+  \gdef\@degnamept{Doutora em Tecnologia}
+  \gdef\@degnamees{Doctora en Tecnología}
+  \fi
+  \gdef\@degnameen{Doctor in Technology}
+  \gdef\@monopt{Monografia de qualificação}
+  \gdef\@monoes{Monografía de calificación}
+  \gdef\@monoen{Qualification monograph}
+}
 \gdef\mestrado{
 %added 
   \gdef\@textoaviso{\clearpage \cathpage}
   \if\@autora\relax
-  \gdef\@degnamept{Mestre}
-  \gdef\@degnamees{Maestro}
+  \gdef\@degnamept{Mestre em Tecnologia}
+  \gdef\@degnamees{Maestro en Tecnología}
   \else
-  \gdef\@degnamept{Mestra}
-  \gdef\@degnamees{Maestra}
+  \gdef\@degnamept{Mestra em Tecnologia}
+  \gdef\@degnamees{Maestra en Tecnología}
   \fi
-  \gdef\@degnameen{Master}
+  \gdef\@degnameen{Master of Science in Technology}
   \gdef\@monopt{Dissertação}
   \gdef\@monoes{Dissertacíon}
   \gdef\@monoen{Thesis}
 }
+%%%%
 \gdef\doutorado{
 %added 
   \gdef\@textoaviso{\clearpage \cathpage}
   \if\@autora\relax
-  \gdef\@degnamept{Doutor}
-  \gdef\@degnamees{Doctor}
+  \gdef\@degnamept{Doutor em Tecnologia}
+  \gdef\@degnamees{Doctoren Tecnología}
   \else
-  \gdef\@degnamept{Doutora}
-  \gdef\@degnamees{Doctora}
+  \gdef\@degnamept{Doutora em Tecnologia}
+  \gdef\@degnamees{Doctora en Tecnología}
   \fi
-  \gdef\@degnameen{Doctor}
+  \gdef\@degnameen{Doctor in Technology}
   \gdef\@monopt{Tese}
   \gdef\@monoes{Tesis}
-  \gdef\@monoen{Dissertation}
+  \gdef\@monoen{Thesis}
 }
 
 \let\@orientador\relax
@@ -282,7 +314,7 @@
   \normalsize
   \hfill\begin{minipage}[t]{0.54\textwidth}
     \supresshyphen
-    \@monopt\xspace apresentada à Faculdade de Tecnologia da Universidade Estadual de Campinas como parte dos requisitos para a obtenção do título de \@degnamept\xspace em Tecnologia\ifx\@cotutela\relax\else\xspace no âmbito do acordo
+    \@monopt\xspace apresentada à Faculdade de Tecnologia da Universidade Estadual de Campinas como parte dos requisitos para a obtenção do título de \@degnamept\xspace \ifx\@cotutela\relax\else\xspace no âmbito do acordo
     de Cotutela firmado entre a Unicamp e a \@cotutela\fi.
   \end{minipage}
   \ifcase\@thesislanguage
