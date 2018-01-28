@@ -7,7 +7,7 @@ A utilização desse modelo é livre e está de acordo com a última versão das
 
 Você também poderá utilizar esse modelo diretamente no [Overleaf](https://www.overleaf.com), um site que permite a edição de textos no LaTeX de forma bem prática.
 
-O modelo no site Overleaf está disponível em neste [link](https://www.overleaf.com/latex/templates/template-para-teses-e-dissertacoes-na-ft-slash-unicamp/rwmpsjnbtdzf) ou procure por **Template para teses e dissertações na FT/UNICAMP**. Verifique se está na última versão (01/junho/2017).
+O modelo no site Overleaf está disponível em neste [link](https://www.overleaf.com/latex/templates/template-para-teses-e-dissertacoes-na-ft-slash-unicamp/rwmpsjnbtdzf) ou procure por **Template para teses e dissertações na FT/UNICAMP**. Verifique se está na última versão (25/setembro/2017).
 
 ## Arquivos que você vai utilizar
 :no_entry_sign:Você **não** deve mexer no arquivo tese-FT.cls. Nele estão os comandos para a devida formatação do texto.
