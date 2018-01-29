@@ -1,20 +1,18 @@
-# Textos acadêmicos
+# Dicas úteis para escrever bons textos acadêmicos
 Informações úteis e dicas para escrever um bom texto acadêmico.
 
-Por ![André Leon S. Gradvohl, Dr.](https://gradvohl.github.io)
-
-gradvohl@ft.unicamp.br
-
----
-## Para o que serve esse texto?
 O objetivo desse texto é oferecer àqueles que vão escrever ou estão escrevendo um texto acadêmico -- seja uma monografia com Ttrabalho de cnclusão de curso, dissertação de mestrado) ou uma tese de doutorado.
 
 Há diferenças sutis entre esses tipos de texto, mas geralmente todos eles apresentam uma estrutura muito similar, comum a todos os textos acadêmicos.
 
 É importante destacar que essa apresentação **não substitui** outros textos e uma boa aula de Metodologia Científica.
 
+Por ![André Leon S. Gradvohl, Dr.](https://gradvohl.github.io)
+
+gradvohl@ft.unicamp.br
+
 ---
-## Estrutura dessa apresentação
+## Estrutura desse texto
 Nessa apresentação, vamos abordar cada um dos principais componentes de um texto acadêmico, a saber:
 - Elementos pré-textuais
   * Listas de figuras, tabelas, símbolos e abreviaturas.
@@ -48,5 +46,3 @@ Porém, nos textos em português, o mais frequente é o uso da voz passiva. Por 
 Há muita discussão sobre o tipo de voz utilizar. Os defensores da voz ativa -- especialmente nos textos em inglês -- dizem que essa abordagem coloca o pesquisador como um sujeito ativo da pesquisa, isto é, o responsável pelo método utilizado e pelos resultados. Já os defensores da voz passiva defendem a impessoalidade, uma característica fundamental do pesquisador.
 
 O mais importante é, depois que escolher um desses estilos, manter o mesmo estilo do começo ao fim do texto.
-
-
