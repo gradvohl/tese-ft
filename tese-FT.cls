@@ -15,7 +15,13 @@
 % Email:        gradvohl@ft.unicamp.br
 % Lattes CV:    http://lattes.cnpq.br/9343261628675642
 % 
-% Última versão: 25/Setembro/2017
+% Última versão: 06/julho/2018
+%
+% Adições/Alterações nesta última versão
+% - Substituição do Biblatex com ABNT ao invés do bibtex original
+% - A maioria dos pacotes necessários foram movidos para o arquivo
+%   tese-FT.cls
+% - Apêndices no final
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
@@ -46,18 +52,28 @@
 % Classe base: Relatório
 \LoadClass[12pt,a4paper]{report}
 %
-%Pacotes padrão.
+%Pacotes padrão para as línguas usadas no texto.
 \RequirePackage[english,spanish,brazil,portuguese]{babel}
+%Pacotes para determinar o tipo de fonte usada para imprimir o texto
 \RequirePackage[T1]{fontenc}
+%Pacotes para determinar o tipo de fonte usada para escrever o texto
+\RequirePackage[utf8]{inputenc}
+%Pacotes para facilitar a inclusão das figuras
 \RequirePackage{graphicx}
 \graphicspath{{./logotipos/}{./figuras/}}
 \PassOptionsToPackage{table}{xcolor}
+%Pacotes para incluir os hiperlinks no texto
+\RequirePackage{hyperref}
+%Mantenha o pacote a seguir para incluir a lista de símbolos.
+\usepackage{nomencl} \makenomenclature
 \RequirePackage{pdfpages}
 \RequirePackage{xspace}
 \RequirePackage{setspace}
 \RequirePackage{geometry}
 \geometry{a4paper,top=30mm,bottom=20mm,left=30mm,right=20mm}
-\RequirePackage[utf8]{inputenc}
+\RequirePackage{csquotes}
+%Pacotes para adicionar a bibliografia
+\RequirePackage[style=abnt,usedashes,uniquename=init,giveninits]{biblatex}
 
 % Definição de novos comandos
 \newcommand{\@FT}{Faculdade de Tecnologia}
@@ -115,7 +131,7 @@
 %%%%
 \gdef\qualificacaoMestrado{
 %added 
-  \gdef\@textoaviso{\clearpage \cathpage}
+  \gdef\@textoaviso{\clearpage}
   \if\@autora\relax
   \gdef\@degnamept{Mestre em Tecnologia}
   \gdef\@degnamees{Maestro en Tecnología}
@@ -131,7 +147,7 @@
 %%%%
 \gdef\qualificacaoDoutorado{
 %added 
-  \gdef\@textoaviso{\clearpage \cathpage}
+  \gdef\@textoaviso{\clearpage}
   \if\@autora\relax
   \gdef\@degnamept{Doutor em Tecnologia}
   \gdef\@degnamees{Doctor en Tecnología}
@@ -384,9 +400,12 @@
 \def\cathpage{
   \ifx\@fichacatalografica\relax
   Na versão final, esta página será substituída pela
-  ficha catalográfica nas dissertação de mestrado e tese de doutorado. \\
-  No caso de TCC, deixe essa página em branco.
-  \\
+  ficha catalográfica na dissertação de mestrado e ou na
+  tese de doutorado.
+  
+  No caso de TCC, deixe essa página em branco.\\
+  Adicione o arquivo PDF com a ficha catalográfica no comando \textbackslash\texttt{fichacatalografica\{\,\}} no arquivo principal.
+  
   De acordo com o padrão da CCPG: ``Quando se tratar de Teses e
   Dissertações financiadas por agências de fomento, os beneficiados
   deverão fazer referência ao apoio recebido e inserir esta
@@ -498,9 +517,6 @@
 \pagestyle{headings}
 \setstretch{1.1}
 }
-
-\let\@oldbiblio\thebibliography
-\renewcommand{\thebibliography}[1]{\newpage\addcontentsline{toc}{chapter}{\bibname}\@oldbiblio{#1}}
 
 %controle de linhas órfãs e viúvas.
 \widowpenalty10000

@@ -16,7 +16,13 @@
 % Email:        gradvohl@ft.unicamp.br
 % Lattes CV:    http://lattes.cnpq.br/9343261628675642
 % 
-% Última versão: 25/setembro/2017
+% Última versão: 06/julho/2018
+%
+% Adições/Alterações nesta última versão
+% - Substituição do Biblatex com ABNT ao invés do bibtex original
+% - A maioria dos pacotes necessários foram movidos para o arquivo
+%   tese-FT.cls
+% - Apêndices no final
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Escolha: Portugues ou Ingles ou Espanhol.
@@ -27,21 +33,8 @@
 %\documentclass[Ingles]{tese-FT}
 %\documentclass[Espanhol,Final]{tese-FT}
 
-% Para acrescentar comentários ao PDF descomente:
-\usepackage
-%  [pdfauthor={nome do autor},
-%   pdftitle={titulo},
-%   pdfkeywords={palavra-chave, palavra-chave},
-%   pdfproducer={Latex with hyperref},
-%   pdfcreator={pdflatex}]
-{hyperref}
-
-%Mantenha o pacote a seguir para citações no formato ABNT
-\usepackage[alf]{abntex2cite}
-
-%Mantenha o pacote a seguir para incluir a lista de símbolos.
-\usepackage{nomencl}
-\makenomenclature
+%Adicione seu arquivo com as referências bibliográficas
+\addbibresource{bibliografia.bib}
 
 %O pacote a seguir gera um dummy text. Elimine a linha quando
 % for editar seu texto.
@@ -50,7 +43,7 @@
 \begin{document}
 
 % Escolha entre autor ou autora:
-\autor{Nome do Autor}
+\autor{Nome do autor}
 %\autora{Nome da Autora}
 
 % Sempre deve haver um título em português:
@@ -69,18 +62,18 @@
 %\coorientadora{Prof. Dra. Eng. Lic. Nome da Co-Orientadora}
 
 % Escolha entre uma das quatro opções a seguir (comente as demais):
-\bsi         % para Trabalho de Conclusão de Curso em BSI
+%\bsi         % para Trabalho de Conclusão de Curso em BSI
 %\tads       % para Trabalho de Conclusão de Curso em TADS
 %\qualificacaoMestrado  % Para textos de qualificação de mestrado.
 %\qualificacaoDoutorado % Para textos de qualificação de doutorado.
 %\mestrado   % para Dissertação de Mestrado em Tecnologia
-%\doutorado  % para Tese de Doutorado em Tecnologia
+\doutorado  % para Tese de Doutorado em Tecnologia
 
 % Se houve cotutela, defina:
 %\cotutela{Universidade Nova de Plutão}
 
 %Defina a data da defesa no formato {Dia}{Mês}{Ano}
-\datadadefesa{16}{03}{2017}
+\datadadefesa{16}{07}{2018}
 
 % Para a versão final defina:
 % Repita o nome do Orientador(a) no primeiro avaliador
@@ -119,15 +112,14 @@
 % \end{epigrafe}
 %
 %
-% Agradecimentos ou Acknowledgements ou Agradecimientos
-\prefacesection{Agradecimentos}
-Os agradecimentos devem ocupar uma única página.
+% Adicione no arquivo "agradecimentos.tex" os seus agradecimentos
+% Caso prefira omitir os agradecimentos, comente a linha a seguir.
+\input{agradecimentos}
 
 % Sempre deve haver um resumo em português:
 \begin{resumo}
 O resumo deve ter no máximo 500 palavras e deve ocupar uma única página.
 \end{resumo}
-
 
 % Sempre deve haver um abstract:
 \begin{abstract}
@@ -151,7 +143,9 @@ The abstract must have at most 500 words and must fit in a single page.
 % A lista de símbolos é opcional:
 % \prefacesection{Lista de Símbolos}
 
-% Quem usa o pacote nomencl para abreviaturas pode incluir:
+% A lista de abreviações e siglas vem a seguir.
+% Dê uma olhada no pacote nomencl para ver os comandos para 
+% adicionar abreviações e siglas no texto.
 \renewcommand{\nomname}{Lista de Abreviações e Siglas}
 \printnomenclature[3cm]
 
@@ -183,25 +177,18 @@ The abstract must have at most 500 words and must fit in a single page.
 % Detalhe: não precisa incluir a extensão .tex
 \include{conclusoes}
 
-
-% Os comandos para as referências bibliográficas estão a seguir
-% Estilo de bibliografia. Nesse caso é o estilo alfabético.
-\bibliographystyle{abntex2-alf}
-% As referências bibliográficas estão no arquivo 
-% bibliografia.bib . Nesse caso, coloque o arquivo sem a
-% extensão .bib.
-\bibliography{bibliografia}
+% Os comandos para incluir as referências bibliográficas
+\printbibliography[heading=bibintoc, % Adiciona no sumário
+                   title=Referências bibliográficas % Nome do Capítulo
+                  ]
 
 % Os anexos, se houver, vêm depois das referências:
 \appendix
-\chapter{Primeiro Apêndice}
-% O comando a seguir gera um "dummy text". 
-% Elimine-o quando escrever sua dissertação.
-\lipsum[9]
 
-\chapter{Segundo  Apêndice}
-% O comando a seguir gera um "dummy text". 
-% Elimine-o quando escrever sua dissertação.
-\lipsum[10]
+% O comando a seguir inclui o arquivo apendices.tex
+% que contém os apêndices. Observe o comando \appendix
+% na linha anterior
+% Detalhe: não precisa incluir a extensão .tex
+\include{apendices}
 
 \end{document}
