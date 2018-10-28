@@ -1,0 +1,196 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The following comments were written in Portuguese, because this 
+% template applies only for School of Technology at University 
+% of Campinas, Brazil.
+%
+% Este é um modelo Latex para monografias de Trabalhos de Conclusão 
+% de Curso (TCC) na graduação, monografias de Mestrado e Teses de 
+% doutorado da Faculdade de Tecnologia (FT) da Universidade 
+% Estadual de Campinas (UNICAMP).
+%
+% Esse modelo e seu respectivo arquivo de classe de documento 
+% foram adaptado do modelo de teses e dissertações do 
+% Instituto de Computação da UNICAMP.
+%
+% Autor: André Leon Sampaio Gradvohl, Dr.
+% Email:        gradvohl@ft.unicamp.br
+% Lattes CV:    http://lattes.cnpq.br/9343261628675642
+% 
+% Última versão: 28/outubro/2018
+%
+% Adições/Alterações nesta última versão
+% - Pequenos ajustes para se adequar à norma CCPG Nº 002/2018
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Escolha: Portugues ou Ingles ou Espanhol.
+% Para a versão final do texto, acrescente a palavra "Final",
+% como na segunda linha abaixo da próxima.
+%\documentclass[Portugues]{tese-FT}
+\documentclass[Portugues,Final]{tese-FT}
+%\documentclass[Ingles]{tese-FT}
+%\documentclass[Espanhol,Final]{tese-FT}
+
+%Adicione seu arquivo com as referências bibliográficas
+\addbibresource{bibliografia.bib}
+
+%O pacote a seguir gera um dummy text. Elimine a linha quando
+% for editar seu texto.
+\usepackage{lipsum}
+
+\begin{document}
+
+% Escolha entre autor ou autora:
+\autor{Nome do autor}
+%\autora{Nome da Autora}
+
+% Sempre deve haver um título em português:
+\titulo{Título da Dissertação ou Tese em Português}
+
+% Se a língua for o inglês ou o espanhol defina:
+%\title{The Dissertation or Thesis Title in English or Spanish for FT}
+
+% Escolha entre orientador ou orientadora e inclua os títulos:
+\orientador{Prof. Dr. Nome do Orientador}
+%\orientadora{Profa. Dra. Nome da Orientadora}
+
+% Escolha entre coorientador ou coorientadora, se houver, 
+% e inclua os títulos:
+%\coorientador{Prof. Dr. Eng. Lic. Nome do Co-Orientador}
+%\coorientadora{Prof. Dra. Eng. Lic. Nome da Co-Orientadora}
+
+% Escolha entre uma das quatro opções a seguir (comente as demais):
+%\bsi         % para Trabalho de Conclusão de Curso em BSI
+%\tads       % para Trabalho de Conclusão de Curso em TADS
+%\qualificacaoMestrado  % Para textos de qualificação de mestrado.
+%\qualificacaoDoutorado % Para textos de qualificação de doutorado.
+%\mestrado   % para Dissertação de Mestrado em Tecnologia
+\doutorado  % para Tese de Doutorado em Tecnologia
+
+%Defina a área de concentração. Se for TCC, deixe comentado
+\areaConcentracao{Sistemas de Informação e Comunicação}
+%\areaConcentracao{Ambiente}
+%\areaConcentracao{Ciência dos Materiais}
+
+% Se houve cotutela, defina:
+%\cotutela{Universidade Nova de Plutão}
+
+%Defina a data da defesa no formato {Dia}{Mês}{Ano}
+\datadadefesa{16}{07}{2018}
+
+% Para a versão final defina:
+% Repita o nome do Orientador(a) no primeiro avaliador
+\avaliadorA{Prof. Dr. Nome do Orientador}{FT/UNICAMP}
+\avaliadorB{Profa. Dra. Segunda Avaliadora}{Instituição da segunda avaliadora}
+\avaliadorC{Dr. Terceiro Avaliador}{Instituição do terceiro avaliador}
+%\avaliadorD{Prof. Dr. Quarto Avaliador}{Instituição do quarto avaliador}
+%\avaliadorE{Prof. Dr. Quinto Avaliador}{Instituição do quinto avaliador}
+%\avaliadorF{Prof. Dr. Sexto Avaliador}{Instituição do sexto avaliador}
+%\avaliadorG{Prof. Dr. Sétimo Avaliador}{Instituição do sétimo avaliador}
+%\avaliadorH{Prof. Dr. Oitavo Avaliador}{Instituição do oitavo avaliador}
+
+
+% Para incluir a ficha catalográfica em PDF na versão final, 
+% copie o arquivo PDF, descomente e ajuste a linha a seguir:
+%\fichacatalografica{arquivo.pdf}
+
+% Este comando deve ficar aqui:
+\paginasiniciais
+
+% Se houver dedicatória, descomente a linha a seguir:
+%\prefacesection{Isso é um teste}
+%A dedicatória deve ocupar uma única página.
+%
+%
+% Se houver epígrafe, descomente e edite as linhas a seguir:
+% \begin{epigrafe}
+% {\it
+% Vita brevis,\\
+% ars longa,\\
+% occasio praeceps,\\
+% experimentum periculosum,\\
+% iudicium difficile.}
+%
+% \hfill (Hippocrates)
+% \end{epigrafe}
+%
+%
+% Adicione no arquivo "agradecimentos.tex" os seus agradecimentos
+% Caso prefira omitir os agradecimentos, comente a linha a seguir.
+\input{agradecimentos}
+
+% Sempre deve haver um resumo em português:
+\begin{resumo}
+O resumo deve ter no máximo 500 palavras e deve ocupar uma única página.
+\end{resumo}
+
+% Sempre deve haver um abstract:
+\begin{abstract}
+The abstract must have at most 500 words and must fit in a single page.
+\end{abstract}
+
+% Se houver um resumo em espanhol, descomente as linhas a seguir:
+%\begin{resumen}
+% A mesma regra aplica-se.
+%\end{resumen}
+
+% A lista de figuras:
+\listoffigures
+
+% A lista de tabelas:
+\listoftables
+
+% A lista de abreviações e siglas é opcional:
+% \prefacesection{Lista de Abreviações e Siglas}
+
+% A lista de símbolos é opcional:
+% \prefacesection{Lista de Símbolos}
+
+% A lista de abreviações e siglas vem a seguir.
+% Dê uma olhada no pacote nomencl para ver os comandos para 
+% adicionar abreviações e siglas no texto.
+\renewcommand{\nomname}{Lista de Abreviações e Siglas}
+\printnomenclature[3cm]
+
+% O sumário vem aqui:
+\tableofcontents
+
+% E esta linha deve ficar bem aqui:
+\fimdaspaginasiniciais
+
+% O corpo da dissertação ou tese começa aqui:
+%
+% O comando a seguir inclui o arquivo introducao.tex
+% que contém o capítulo de Introdução. 
+% Detalhe: não precisa incluir a extensão .tex
+\include{introducao}
+
+% O comando a seguir inclui o arquivo levantamento.tex
+% que contém o capítulo de levantamento bibliográfico. 
+% Detalhe: não precisa incluir a extensão .tex
+\include{levantamento}
+
+% O comando a seguir inclui o arquivo desenvolvimento.tex
+% que contém o capítulo de desenvolvimento. 
+% Detalhe: não precisa incluir a extensão .tex
+\include{desenvolvimento}
+
+% O comando a seguir inclui o arquivo conclusoes.tex
+% que contém o capítulo de conclusoes. 
+% Detalhe: não precisa incluir a extensão .tex
+\include{conclusoes}
+
+% Os comandos para incluir as referências bibliográficas
+\printbibliography[heading=bibintoc, % Adiciona no sumário
+                   title=Referências bibliográficas % Nome do Capítulo
+                  ]
+
+% Os anexos, se houver, vêm depois das referências:
+\appendix
+
+% O comando a seguir inclui o arquivo apendices.tex
+% que contém os apêndices. Observe o comando \appendix
+% na linha anterior
+% Detalhe: não precisa incluir a extensão .tex
+\include{apendices}
+
+\end{document}

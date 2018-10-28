@@ -15,13 +15,10 @@
 % Email:        gradvohl@ft.unicamp.br
 % Lattes CV:    http://lattes.cnpq.br/9343261628675642
 % 
-% Última versão: 06/julho/2018
+% Última versão: 28/outubro/2018
 %
 % Adições/Alterações nesta última versão
-% - Substituição do Biblatex com ABNT ao invés do bibtex original
-% - A maioria dos pacotes necessários foram movidos para o arquivo
-%   tese-FT.cls
-% - Apêndices no final
+% - Pequenos ajustes para se adequar à norma CCPG Nº 002/2018
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
@@ -243,6 +240,9 @@
 \let\@cotutela\relax
 \def\cotutela#1{\gdef\@cotutela{#1}}
 
+\let\@areaConcentracao\relax
+\def\areaConcentracao#1{\gdef\@areaConcentracao{#1}}
+
 \def\paginasiniciais{
   \newlength{\oldparindent}
   \setlength{\oldparindent}{\parindent}
@@ -305,7 +305,7 @@
     {\bf \@titulo}
     \vfill
     \large
-    Limeira, \@ano
+    Limeira\\\@ano
   \end{center}
 }
 
@@ -330,8 +330,7 @@
   \normalsize
   \hfill\begin{minipage}[t]{0.54\textwidth}
     \supresshyphen
-    \@monopt\xspace apresentada à Faculdade de Tecnologia da Universidade Estadual de Campinas como parte dos requisitos para a obtenção do título de \@degnamept\xspace \ifx\@cotutela\relax\else\xspace no âmbito do acordo
-    de Cotutela firmado entre a Unicamp e a \@cotutela\fi.
+    \@monopt\xspace apresentada à Faculdade de Tecnologia da Universidade Estadual de Campinas como parte dos requisitos para a obtenção do título de \@degnamept\xspace \ifx\@areaConcentracao\relax\else, na área de  \@areaConcentracao\fi\ifx\@cotutela\relax\else\xspace, no âmbito do acordo de Cotutela firmado entre a Unicamp e a \@cotutela\fi.
   \end{minipage}
   \ifcase\@thesislanguage
     \vskip 8mm
@@ -340,7 +339,7 @@
       \@monoen\xspace presented to the School of Technology of the
       University of Campinas in partial fulfillment of the requirements for
       the degree of \@degnameen\xspace in Computer
-      Science\ifx\@cotutela\relax\else\xspace under the double-diploma
+      Science\ifx\@areaConcentracao\relax\else, in the area of  \@areaConcentracao\fi\ifx\@cotutela\relax\else\xspace under the double-diploma
       agreement between Unicamp and \@cotutela\fi.
     \end{minipage}
   \or
@@ -349,7 +348,7 @@
       \supresshyphen
       \@monoes\xspace presentada a Faculdad de Tecnologia de la
       Universidad de Campinas para obtener el título de
-      \@degnamees\xspace en Tecnologia\ifx\@cotutela\relax\else\xspace en el ámbito del
+      \@degnamees\xspace en Tecnologia\ifx\@areaConcentracao\relax\else, en la area de  \@areaConcentracao\fi\ifx\@cotutela\relax\else\xspace en el ámbito del
       acuerdo de Cotutela firmando entre la Universidad Estatal de Campinas
       y la \@cotutela\fi.
     \end{minipage}
@@ -392,7 +391,7 @@
   \vfill
   \begin{center}
     \large
-    Limeira, \@ano
+    Limeira\\ \@ano
   \end{center}
 }
 
@@ -493,7 +492,6 @@
   \fi
 }
 
-
 \gdef\supresshyphen{
   \tolerance=1
   \emergencystretch=\maxdimen
@@ -515,7 +513,7 @@
 \let\ps@plain\ps@mystyle
 \makeatother
 \pagestyle{headings}
-\setstretch{1.1}
+\setstretch{1.5} %Definido espaçamento entre linhas de 1,5
 }
 
 %controle de linhas órfãs e viúvas.
