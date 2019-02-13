@@ -440,7 +440,7 @@ que submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@
 \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or
       junho\or julho\or agosto\or setembro\or outubro\or novembro\or
       dezembro\fi\xspace de 
-\@ano\xspace na Faculdade de Tecnologia-FT/UNICAMP, em Limeira/SP.
+\@ano\xspace na Faculdade de Tecnologia -- FT/UNICAMP, em Limeira/SP.
 
     \vfill
 
