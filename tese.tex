@@ -16,10 +16,11 @@
 % Email:        gradvohl@ft.unicamp.br
 % Lattes CV:    http://lattes.cnpq.br/9343261628675642
 % 
-% Última versão: 28/outubro/2018
+% Última versão: 13/Fevereiro/2019
 %
 % Adições/Alterações nesta última versão
-% - Pequenos ajustes para se adequar à norma CCPG Nº 002/2018
+% - Ajuste da menção à ata de defesa.
+% - Supressão do logotipo da FT.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Escolha: Portugues ou Ingles ou Espanhol.
@@ -36,6 +37,10 @@
 %O pacote a seguir gera um dummy text. Elimine a linha quando
 % for editar seu texto.
 \usepackage{lipsum}
+
+% Adicione o pacote a seguir, se seu texto tiver uma lista de 
+% símbolos. Não confunda com a lista de abreviaturas.
+%\usepackage[symbols,nogroupskip,sort=none]{glossaries-extra}
 
 \begin{document}
 
@@ -63,8 +68,8 @@
 %\tads       % para Trabalho de Conclusão de Curso em TADS
 %\qualificacaoMestrado  % Para textos de qualificação de mestrado.
 %\qualificacaoDoutorado % Para textos de qualificação de doutorado.
-%\mestrado   % para Dissertação de Mestrado em Tecnologia
-\doutorado  % para Tese de Doutorado em Tecnologia
+\mestrado   % para Dissertação de Mestrado em Tecnologia
+%\doutorado  % para Tese de Doutorado em Tecnologia
 
 %Defina a área de concentração. Se for TCC, deixe comentado
 \areaConcentracao{Sistemas de Informação e Comunicação}
@@ -75,7 +80,7 @@
 %\cotutela{Universidade Nova de Plutão}
 
 %Defina a data da defesa no formato {Dia}{Mês}{Ano}
-\datadadefesa{16}{07}{2018}
+\datadadefesa{13}{02}{2019}
 
 % Para a versão final defina:
 % Repita o nome do Orientador(a) no primeiro avaliador
@@ -139,11 +144,9 @@ The abstract must have at most 500 words and must fit in a single page.
 % A lista de tabelas:
 \listoftables
 
-% A lista de abreviações e siglas é opcional:
-% \prefacesection{Lista de Abreviações e Siglas}
-
-% A lista de símbolos é opcional:
-% \prefacesection{Lista de Símbolos}
+% A lista de símbolos é opcional. Não confunda a lisa de símbolos
+% com a lista de abreviaturas.
+%\input{listaSimbolos}
 
 % A lista de abreviações e siglas vem a seguir.
 % Dê uma olhada no pacote nomencl para ver os comandos para 

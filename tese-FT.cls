@@ -15,10 +15,11 @@
 % Email:        gradvohl@ft.unicamp.br
 % Lattes CV:    http://lattes.cnpq.br/9343261628675642
 % 
-% Última versão: 28/outubro/2018
+% Última versão: 13/Fevereiro/2019
 %
 % Adições/Alterações nesta última versão
-% - Pequenos ajustes para se adequar à norma CCPG Nº 002/2018
+% - Ajuste da menção à ata de defesa.
+% - Supressão do logotipo da FT.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
@@ -258,8 +259,6 @@
   \titlepage
 
   \@textoaviso
-  %\clearpage
-  %\cathpage  %Pagina removida no template para TCC
 
   \clearpage
   \approvalpage
@@ -268,25 +267,19 @@
   \resetlang
 }
 
-% Definição de logotipos utilizados na capa.
-\def\logos{
-  \noindent
-  \begin{center}
-  \begin{tabular}{ccc}
-    \raisebox{-.5\height}{\includegraphics[width=2.2cm]{logo-unicamp.eps}}
-    &
-    \begin{minipage}{.6\textwidth}
-      \centering
-      \textbf{\@UNICAMP} \\
-      \textbf{\@FT} \\
-    \end{minipage}
-    &
-    \raisebox{-.45\height}{\scalebox{1.11}{%\LogoIcUnicampWithName
-    \includegraphics[width=2.2cm]{logoFT.png}}}
-  \end{tabular}
-  \end{center}
-}
 
+\def\logos{
+    \noindent
+    \raisebox{-.5\height}{\includegraphics[width=2.2cm]{logo-unicamp.eps}}
+
+    \vspace*{2cm}
+    
+    \noindent
+    \begin{center} \large
+        \MakeUppercase{\@UNICAMP}\\
+        \@FT
+    \end{center}
+}
 
 \def\openningpage{
   \logos
@@ -453,8 +446,7 @@
     \hfill\begin{minipage}[t]{\textwidth}
       \begin{center}
       \supresshyphen
-      A ata da defesa com as respectivas assinaturas dos membros da banca
-      encontra-se no processo de vida acadêmica do aluno.
+       A Ata da defesa com as respectivas assinaturas dos membros encontra-se no SIGA/Sistema de Fluxo de Dissertação/Tese e na Secretaria do Programa da Unidade. 
       \end{center}
     \end{minipage}
     \vfill
