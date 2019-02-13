@@ -19,7 +19,7 @@ Os arquivos que você deve utilizar são os seguintes:
 
 Observe :eyes: que existe um diretório **figuras**. Nele você pode adicionar todas as figuras do seu texto. 
 
-se você baixar o modelo tese-FT deste repositório no GitHub, não esqueça de verificar se o LaTeX e todos os pacotes (*packages*) que o modelo depende estão instalados na sua máquina, especialmente o **abntex2cite.sty**.
+Se você baixar o modelo tese-FT deste repositório no GitHub, não esqueça de verificar se o LaTeX e todos os pacotes (*packages*) que o modelo depende estão instalados na sua máquina.
 
 Quaisquer dúvidas podem ser sanadas pelo autor no email :email: a seguir.
 
