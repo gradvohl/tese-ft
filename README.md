@@ -33,5 +33,6 @@ Lattes CV:    http://lattes.cnpq.br/9343261628675642
 
 Esse software está em um repositório indexado pelo Zenodo e pode ser acessado com o DOI a seguir 
 
-[![DOI](https://zenodo.org/badge/93098251.svg)](https://zenodo.org/badge/latestdoi/93098251)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.842220.svg)](https://doi.org/10.5281/zenodo.842220)
+
 
