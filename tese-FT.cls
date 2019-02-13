@@ -19,7 +19,9 @@
 %
 % Adições/Alterações nesta última versão
 % - Ajuste da menção à ata de defesa.
-% - Supressão do logotipo da FT.
+% - Supressão do logotipo da FT de acordo com a nova
+%   resolução CCPG 002/2018.
+% - Adição da Folha de aprovação
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
@@ -101,9 +103,11 @@
   \if\@autora\relax
   \gdef\@degnamept{Bacharel em Sistemas de Informação}
   \gdef\@degnamees{Licenciatura en Sistemas de Información}
+  \gdef\@artigo{o}
   \else
   \gdef\@degnamept{Bacharela em Sistemas de Informação}
   \gdef\@degnamees{Bacharela}
+  \gdef\@artigo{a}
   \fi
   \gdef\@degnameen{Bachelor in Information Sciences}
   \gdef\@monopt{Dissertação}
@@ -117,9 +121,11 @@
   \if\@autora\relax
   \gdef\@degnamept{Tecnólogo em Análise e Desenvolvimento de Sistemas}
   \gdef\@degnamees{Tecnólogo}
+  \gdef\@artigo{o}
   \else
   \gdef\@degnamept{Tecnóloga em Análise e Desenvolvimento de Sistemas}
   \gdef\@degnamees{Tecnóloga}
+  \gdef\@artigo{a}
   \fi
   \gdef\@degnameen{Technologist in Systems Analysis and Development}
   \gdef\@monopt{Dissertação}
@@ -133,9 +139,11 @@
   \if\@autora\relax
   \gdef\@degnamept{Mestre em Tecnologia}
   \gdef\@degnamees{Maestro en Tecnología}
+  \gdef\@artigo{o}
   \else
   \gdef\@degnamept{Mestra em Tecnologia}
   \gdef\@degnamees{Maestra en Tecnología}
+  \gdef\@artigo{a}
   \fi
   \gdef\@degnameen{Master of Science in Technology}
   \gdef\@monopt{Monografia de qualificação}
@@ -149,9 +157,11 @@
   \if\@autora\relax
   \gdef\@degnamept{Doutor em Tecnologia}
   \gdef\@degnamees{Doctor en Tecnología}
+  \gdef\@artigo{o}
   \else
   \gdef\@degnamept{Doutora em Tecnologia}
   \gdef\@degnamees{Doctora en Tecnología}
+  \gdef\@artigo{a}
   \fi
   \gdef\@degnameen{Doctor in Technology}
   \gdef\@monopt{Monografia de qualificação}
@@ -164,9 +174,11 @@
   \if\@autora\relax
   \gdef\@degnamept{Mestre em Tecnologia}
   \gdef\@degnamees{Maestro en Tecnología}
+  \gdef\@artigo{o}
   \else
   \gdef\@degnamept{Mestra em Tecnologia}
   \gdef\@degnamees{Maestra en Tecnología}
+  \gdef\@artigo{a}
   \fi
   \gdef\@degnameen{Master of Science in Technology}
   \gdef\@monopt{Dissertação}
@@ -180,9 +192,11 @@
   \if\@autora\relax
   \gdef\@degnamept{Doutor em Tecnologia}
   \gdef\@degnamees{Doctoren Tecnología}
+  \gdef\@artigo{o}
   \else
   \gdef\@degnamept{Doutora em Tecnologia}
   \gdef\@degnamees{Doctora en Tecnología}
+  \gdef\@artigo{a}
   \fi
   \gdef\@degnameen{Doctor in Technology}
   \gdef\@monopt{Tese}
@@ -414,51 +428,55 @@
 
 \def\approvalpage{
   \iffinalversion
-    \logos
+    %\logos
+    \noindent\centerline{\large\MakeUppercase{\textbf{Folha de Aprovação}}}
     \vskip 20mm
-    \begin{center}
-      \large
-      {\bf \if\@autora\relax\@autor\else\@autora\fi}
-      \vskip 15mm
-      \ifcase\@thesislanguage
-        {\bf\@title}
-        \vskip 8mm
-      \or
-        {\bf\@title}
-        \vskip 8mm
-      \fi
-      {\bf \@titulo}
-    \end{center}
+    
+    Abaixo se apresentam os membros da comissão julgadora da sessão pública de defesa
+de dissertação para o Título de \@degnamept\xspace na área de concentração de \@areaConcentracao, a
+que submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@autora\fi, em 
+\@dia\xspace de
+\ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or
+      junho\or julho\or agosto\or setembro\or outubro\or novembro\or
+      dezembro\fi\xspace de 
+\@ano\xspace na Faculdade de Tecnologia-FT/UNICAMP, em Limeira/SP.
+
     \vfill
-    {\bf Banca Examinadora:}
+
     \ifx\@avalA\relax
     \else
-      \begin{itemize}
-      \item \@avalA\newline\@instavalA
-      \ifx\@avalB\relax\else \item \@avalB\newline\@instavalB\fi
-      \ifx\@avalC\relax\else \item \@avalC\newline\@instavalC\fi
-      \ifx\@avalD\relax\else \item \@avalD\newline\@instavalD\fi
-      \ifx\@avalE\relax\else \item \@avalE\newline\@instavalE\fi
-      \ifx\@avalF\relax\else \item \@avalF\newline\@instavalF\fi
-      \end{itemize}
+       \noindent \textbf{\@avalA}\newline 
+       \noindent Presidente da Comissão Julgadora \vspace*{3em}%\@instavalA 
+       
+       \ifx\@avalB\relax\else \noindent \textbf{\@avalB}\newline\@instavalB\vspace*{3em}\fi
+       
+       \ifx\@avalC\relax\else \noindent \textbf{\@avalC}\newline\@instavalC\vspace*{3em}\fi
+       
+       \ifx\@avalD\relax\else \noindent \textbf{\@avalD}\newline\@instavalD\vspace*{3em}\fi
+       
+       \ifx\@avalE\relax\else \noindent \textbf{\@avalE}\newline\@instavalE\vspace*{3em}\fi
+       
+       \ifx\@avalF\relax\else \noindent \textbf{\@avalF}\newline\@instavalF\fi
     \fi
     \vfill
-    \hfill\begin{minipage}[t]{\textwidth}
-      \begin{center}
+    %\hfill\begin{minipage}[t]{\textwidth}
+      %\begin{center}
+      
       \supresshyphen
-       A Ata da defesa com as respectivas assinaturas dos membros encontra-se no SIGA/Sistema de Fluxo de Dissertação/Tese e na Secretaria do Programa da Unidade. 
-      \end{center}
-    \end{minipage}
-    \vfill
-    \hfill\begin{minipage}[t]{\textwidth}
-      \begin{center}
-      Limeira, \@dia\xspace de
-      \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or
-      junho\or julho\or agosto\or setembro\or outubro\or novembro\or
-      dezembro\fi\xspace
-      de \@ano
-      \end{center}
-    \end{minipage}
+      \noindent
+       Ata da defesa, assinada pelos membros da Comissão Examinadora, consta no SIGA/Sistema de Fluxo de Dissertação/Tese e na Secretaria de Pós Graduação da FT.
+      %\end{center}
+    %\end{minipage}
+    % \vfill
+    % \hfill\begin{minipage}[t]{\textwidth}
+    %   \begin{center}
+    %   Limeira, \@dia\xspace de
+    %   \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or
+    %   junho\or julho\or agosto\or setembro\or outubro\or novembro\or
+    %   dezembro\fi\xspace
+    %   de \@ano
+    %   \end{center}
+    % \end{minipage}
     \vfill
   \else
     Na versão final, esta página será substituída por outra
