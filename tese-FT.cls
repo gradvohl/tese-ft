@@ -55,6 +55,7 @@
 %Pacotes padrão para as línguas usadas no texto.
 \RequirePackage[english,spanish,brazil,portuguese]{babel}
 %Pacotes para determinar o tipo de fonte usada para imprimir o texto
+\RequirePackage{lmodern}
 \RequirePackage[T1]{fontenc}
 %Pacotes para determinar o tipo de fonte usada para escrever o texto
 \RequirePackage[utf8]{inputenc}
