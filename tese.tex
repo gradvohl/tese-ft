@@ -15,14 +15,19 @@
 % Autor: André Leon Sampaio Gradvohl, Dr.
 % Email:        gradvohl@ft.unicamp.br
 % Lattes CV:    http://lattes.cnpq.br/9343261628675642
+% ORCID:        0000-0002-6520-9740
 % 
-% Última versão: 13/Fevereiro/2019
+% Última versão: 24/Março/2019
 %
-% Adições/Alterações nesta última versão
-% - Ajuste da menção à ata de defesa.
-% - Supressão do logotipo da FT de acordo com a nova
-%   resolução CCPG 002/2018.
-% - Adição da Folha de aprovação
+% Adições/Alterações nesta última versão 
+% - Alteração da fonte padrão (times) para fonte libertine, mais 
+%   adequada do que a Times New Roman para teses, mas ainda
+%   compatível com a times.
+% - Adição de comandos para abreviações especiais, e.g., i.e. e
+%   p.ex., respectivamente \eg , \ie , \pex
+% - Adição do pacote booktabs para tabelas.
+% - Ajustes nas referências bibliográficas de acordo com a norma 
+%   ABNT NBR 6023 de 14/11/2018.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Escolha: Portugues ou Ingles ou Espanhol.
@@ -185,9 +190,12 @@ The abstract must have at most 500 words and must fit in a single page.
 \include{conclusoes}
 
 % Os comandos para incluir as referências bibliográficas
+\begin{singlespacing}
+\setlength\bibitemsep{10pt}   % Adiciona uma linha em branco entre duas referências
 \printbibliography[heading=bibintoc, % Adiciona no sumário
-                   title=Referências bibliográficas % Nome do Capítulo
+                   title={Referências bibliográficas} % Nome do Capítulo
                   ]
+\end{singlespacing}
 
 % Os anexos, se houver, vêm depois das referências:
 \appendix

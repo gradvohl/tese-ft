@@ -14,14 +14,19 @@
 % Autor: André Leon Sampaio Gradvohl, Dr.
 % Email:        gradvohl@ft.unicamp.br
 % Lattes CV:    http://lattes.cnpq.br/9343261628675642
+% ORCID:        0000-0002-6520-9740
 % 
-% Última versão: 13/Fevereiro/2019
+% Última versão: 24/Março/2019
 %
-% Adições/Alterações nesta última versão
-% - Ajuste da menção à ata de defesa.
-% - Supressão do logotipo da FT de acordo com a nova
-%   resolução CCPG 002/2018.
-% - Adição da Folha de aprovação
+% Adições/Alterações nesta última versão 
+% - Alteração da fonte padrão (times) para fonte libertine, mais 
+%   adequada do que a Times New Roman para teses, mas ainda
+%   compatível com a times.
+% - Adição de comandos para abreviações especiais, e.g., i.e. e
+%   p.ex., respectivamente \eg , \ie , \pex
+% - Adição do pacote booktabs para tabelas.
+% - Ajustes nas referências bibliográficas de acordo com a norma 
+%   ABNT NBR 6023 de 14/11/2018.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
@@ -53,9 +58,10 @@
 \LoadClass[12pt,a4paper]{report}
 %
 %Pacotes padrão para as línguas usadas no texto.
-\RequirePackage[english,spanish,brazil,portuguese]{babel}
+\RequirePackage[english,spanish,portuguese,brazil]{babel}
 %Pacotes para determinar o tipo de fonte usada para imprimir o texto
-\RequirePackage{lmodern}
+\RequirePackage{libertine}
+\RequirePackage{libertinust1math}
 \RequirePackage[T1]{fontenc}
 %Pacotes para determinar o tipo de fonte usada para escrever o texto
 \RequirePackage[utf8]{inputenc}
@@ -74,7 +80,11 @@
 \geometry{a4paper,top=30mm,bottom=20mm,left=30mm,right=20mm}
 \RequirePackage{csquotes}
 %Pacotes para adicionar a bibliografia
-\RequirePackage[style=abnt,usedashes,uniquename=init,giveninits]{biblatex}
+\RequirePackage[style=abnt,uniquename=init,giveninits,uniquelist=true,maxbibnames=4]{biblatex}
+
+%Pacote para tabelas mais interessantes
+\usepackage{booktabs}
+\renewcommand{\arraystretch}{1.2}
 
 % Definição de novos comandos
 \newcommand{\@FT}{Faculdade de Tecnologia}
@@ -90,13 +100,12 @@
 
 \let\@titulo\relax
 \def\titulo#1{\gdef\@titulo{#1}}
+\title{\@titulo}
 
 \def\grau#1{\gdef\@grau{#1}}
 
 \newif\ifmaster
 
-%\let\@tipotexto\relax
-%\def\tipotexto#1{\def\@tipotexto{#1}}
 %%%%
 \gdef\bsi{
 %added
@@ -429,7 +438,6 @@
 
 \def\approvalpage{
   \iffinalversion
-    %\logos
     \noindent\centerline{\large\MakeUppercase{\textbf{Folha de Aprovação}}}
     \vskip 20mm
     
@@ -460,24 +468,9 @@ que submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@
        \ifx\@avalF\relax\else \noindent \textbf{\@avalF}\newline\@instavalF\fi
     \fi
     \vfill
-    %\hfill\begin{minipage}[t]{\textwidth}
-      %\begin{center}
-      
       \supresshyphen
       \noindent
        Ata da defesa, assinada pelos membros da Comissão Examinadora, consta no SIGA/Sistema de Fluxo de Dissertação/Tese e na Secretaria de Pós Graduação da FT.
-      %\end{center}
-    %\end{minipage}
-    % \vfill
-    % \hfill\begin{minipage}[t]{\textwidth}
-    %   \begin{center}
-    %   Limeira, \@dia\xspace de
-    %   \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or
-    %   junho\or julho\or agosto\or setembro\or outubro\or novembro\or
-    %   dezembro\fi\xspace
-    %   de \@ano
-    %   \end{center}
-    % \end{minipage}
     \vfill
   \else
     Na versão final, esta página será substituída por outra
@@ -537,3 +530,8 @@ que submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@
 \newcommand{\Figura}[1]{Figura~\ref{#1}}
 \newcommand{\Secao}[1] {Seção~\ref{#1}}
 \newcommand{\Tabela}[1] {Tabela~\ref{#1}}
+
+%Comandos para abreviações especiais
+\newcommand{\ie}{i.\,e.\xspace}
+\newcommand{\eg}{e.\,g.\xspace}
+\newcommand{\pex}{p.\,ex.\xspace}
