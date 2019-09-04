@@ -16,17 +16,13 @@
 % Lattes CV:    http://lattes.cnpq.br/9343261628675642
 % ORCID:        0000-0002-6520-9740
 % 
-% Última versão: 24/Março/2019
+% Última versão: 3/Setembro/2019
 %
-% Adições/Alterações nesta última versão 
-% - Alteração da fonte padrão (times) para fonte libertine, mais 
-%   adequada do que a Times New Roman para teses, mas ainda
-%   compatível com a times.
-% - Adição de comandos para abreviações especiais, e.g., i.e. e
-%   p.ex., respectivamente \eg , \ie , \pex
-% - Adição do pacote booktabs para tabelas.
-% - Ajustes nas referências bibliográficas de acordo com a norma 
-%   ABNT NBR 6023 de 14/11/2018.
+% Adições/Alterações nesta última versão:
+% - Adição da opção [ttscale=.875] na fonte libertine para fonte monoespaçada mais proporcional.
+% - Adição de agradecimentos à CAPES na seção de agradecimentos.
+% - Ajustes na questão da numeração de páginas no cabeçalho.
+% - Pequenos ajustes nos pacotes.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
@@ -59,8 +55,9 @@
 %
 %Pacotes padrão para as línguas usadas no texto.
 \RequirePackage[english,spanish,portuguese,brazil]{babel}
+\RequirePackage{fancyhdr}
 %Pacotes para determinar o tipo de fonte usada para imprimir o texto
-\RequirePackage{libertine}
+\RequirePackage[ttscale=.875]{libertine}
 \RequirePackage{libertinust1math}
 \RequirePackage[T1]{fontenc}
 %Pacotes para determinar o tipo de fonte usada para escrever o texto
@@ -72,7 +69,7 @@
 %Pacotes para incluir os hiperlinks no texto
 \RequirePackage{hyperref}
 %Mantenha o pacote a seguir para incluir a lista de símbolos.
-\usepackage{nomencl} \makenomenclature
+\RequirePackage{nomencl} \makenomenclature
 \RequirePackage{pdfpages}
 \RequirePackage{xspace}
 \RequirePackage{setspace}
@@ -80,10 +77,10 @@
 \geometry{a4paper,top=30mm,bottom=20mm,left=30mm,right=20mm}
 \RequirePackage{csquotes}
 %Pacotes para adicionar a bibliografia
-\RequirePackage[style=abnt,uniquename=init,giveninits,uniquelist=true,maxbibnames=4]{biblatex}
+\RequirePackage[style=abnt,uniquename=init,giveninits,uniquelist=true,maxbibnames=4,repeatfields=true]{biblatex}
 
 %Pacote para tabelas mais interessantes
-\usepackage{booktabs}
+\RequirePackage{booktabs}
 \renewcommand{\arraystretch}{1.2}
 
 % Definição de novos comandos
@@ -516,7 +513,26 @@ que submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@
 \makeatletter
 \let\ps@plain\ps@mystyle
 \makeatother
+
+%Definição das primeiras páginas dos capítulos
+\fancypagestyle{plain}{
+  \fancyhf{}% Limpa todos os campos
+  \fancyhead[R]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\headheight}{14.49999pt}%
+}
+
+%Definição das demais páginas do texto
+\fancypagestyle{headings}{%
+  \fancyhf{}% Limpa todos os campos
+  \fancyhead[L]{\textsc{\nouppercase{\leftmark}}}
+  \fancyhead[R]{\thepage}% Numero da página à direita
+  \renewcommand{\headrulewidth}{1pt}%
+  \renewcommand{\headheight}{14.49999pt}%
+}
+
 \pagestyle{headings}
+
 \setstretch{1.5} %Definido espaçamento entre linhas de 1,5
 }
 
