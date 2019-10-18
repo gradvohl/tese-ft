@@ -13,17 +13,18 @@
 % Instituto de Computação da UNICAMP.
 %
 % Autor: André Leon Sampaio Gradvohl, Dr.
-% Email:        gradvohl@ft.unicamp.br
-% Lattes CV:    http://lattes.cnpq.br/9343261628675642
-% ORCID:        0000-0002-6520-9740
+% Email:     gradvohl@ft.unicamp.br
+% Lattes CV: http://lattes.cnpq.br/9343261628675642
+% ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 3/Setembro/2019
+% Última versão: 18/Outubro/2019
 %
 % Adições/Alterações nesta última versão:
-% - Adição da opção [ttscale=.875] na fonte libertine para fonte monoespaçada mais proporcional.
-% - Adição de agradecimentos à CAPES na seção de agradecimentos.
-% - Ajustes na questão da numeração de páginas no cabeçalho.
-% - Pequenos ajustes nos pacotes.
+% - Ajustes na seção de referências bibliográficas:
+%   -- Adição de opção para alinhamento justificado na bibliografia.
+%   -- Bibliografia com espaçamento simples e espaço entre as 
+%      referências para melhor leitura.
+% - Atualização do logo da Unicamp de eps para pdf.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Escolha: Portugues ou Ingles ou Espanhol.
@@ -68,13 +69,13 @@
 
 % Escolha entre uma das quatro opções a seguir (comente as demais):
 %\bsi         % para Trabalho de Conclusão de Curso em BSI
-%\tads       % para Trabalho de Conclusão de Curso em TADS
+%\tads        % para Trabalho de Conclusão de Curso em TADS
 %\qualificacaoMestrado  % Para textos de qualificação de mestrado.
 %\qualificacaoDoutorado % Para textos de qualificação de doutorado.
 \mestrado   % para Dissertação de Mestrado em Tecnologia
 %\doutorado  % para Tese de Doutorado em Tecnologia
 
-%Defina a área de concentração. Se for TCC, deixe comentado
+%Defina a área de concentração. Se for TCC, deixe comentado.
 \areaConcentracao{Sistemas de Informação e Comunicação}
 %\areaConcentracao{Ambiente}
 %\areaConcentracao{Ciência dos Materiais}
@@ -82,8 +83,9 @@
 % Se houve cotutela, defina:
 %\cotutela{Universidade Nova de Plutão}
 
-%Defina a data da defesa no formato {Dia}{Mês}{Ano}
-\datadadefesa{3}{09}{2019}
+% Defina a data da defesa no formato {Dia}{Mês}{Ano}
+% Use apenas números. O template transformará em palavras, se necessário.
+\datadadefesa{18}{10}{2019}
 
 % Para a versão final defina:
 % Repita o nome do Orientador(a) no primeiro avaliador
@@ -104,7 +106,7 @@
 \paginasiniciais
 
 % Se houver dedicatória, descomente a linha a seguir:
-% \prefacesection{Isso é um teste}
+% \prefacesection{Dedicatória}
 % A dedicatória deve ocupar uma única página.
 %
 %
@@ -185,8 +187,12 @@ The abstract must have at most 500 words and must fit in a single page.
 \include{conclusoes}
 
 % Comandos para incluir as referências bibliográficas
+% Define espaçamento simples em cada referência
 \begin{singlespacing}
-\setlength\bibitemsep{10pt}   % Adiciona uma linha em branco entre duas referências
+% Adiciona uma linha em branco entre duas referências
+\setlength\bibitemsep{10pt}   
+
+% Adiciona as referências bibliográficas
 \printbibliography[heading=bibintoc, % Adiciona no sumário
                    title={Referências bibliográficas} % Nome do Capítulo
                   ]

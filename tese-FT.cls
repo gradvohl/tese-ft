@@ -12,19 +12,19 @@
 % Instituto de Computação da UNICAMP.
 %
 % Autor: André Leon Sampaio Gradvohl, Dr.
-% Email:        gradvohl@ft.unicamp.br
-% Lattes CV:    http://lattes.cnpq.br/9343261628675642
-% ORCID:        0000-0002-6520-9740
+% Email:     gradvohl@ft.unicamp.br
+% Lattes CV: http://lattes.cnpq.br/9343261628675642
+% ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 3/Setembro/2019
+% Última versão: 18/Outubro/2019
 %
 % Adições/Alterações nesta última versão:
-% - Adição da opção [ttscale=.875] na fonte libertine para fonte monoespaçada mais proporcional.
-% - Adição de agradecimentos à CAPES na seção de agradecimentos.
-% - Ajustes na questão da numeração de páginas no cabeçalho.
-% - Pequenos ajustes nos pacotes.
+% - Ajustes na seção de referências bibliográficas:
+%   -- Adição de opção para alinhamento justificado na bibliografia.
+%   -- Bibliografia com espaçamento simples e espaço entre as 
+%      referências para melhor leitura.
+% - Atualização do logo da Unicamp de eps para pdf.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{tese-FT}[]
 \typeout{tese-FT}
@@ -77,32 +77,32 @@
 \geometry{a4paper,top=30mm,bottom=20mm,left=30mm,right=20mm}
 \RequirePackage{csquotes}
 %Pacotes para adicionar a bibliografia
-\RequirePackage[style=abnt,uniquename=init,giveninits,uniquelist=true,maxbibnames=4,repeatfields=true]{biblatex}
-
+% Coloque a opção uniquename=false, se não quiser que o Biblatex faça a desambiguação de nomes.
+\RequirePackage[style=abnt,uniquename=init,giveninits,uniquelist=true,maxbibnames=4,repeatfields=true,justify]{biblatex}
 %Pacote para tabelas mais interessantes
 \RequirePackage{booktabs}
 \renewcommand{\arraystretch}{1.2}
-
+%
 % Definição de novos comandos
 \newcommand{\@FT}{Faculdade de Tecnologia}
 \newcommand{\@UNICAMP}{Universidade Estadual de Campinas}
-
+%
 % Criação de variáveis para o texto.
 \let\@autor\relax
 \def\autor#1{\gdef\@autor{#1}}
 \author{\@autor}
-
+%
 \let\@autora\relax
 \def\autora#1{\gdef\@autora{#1}}
-
+%
 \let\@titulo\relax
 \def\titulo#1{\gdef\@titulo{#1}}
 \title{\@titulo}
-
+%
 \def\grau#1{\gdef\@grau{#1}}
-
+%
 \newif\ifmaster
-
+%
 %%%%
 \gdef\bsi{
 %added
@@ -288,10 +288,9 @@
   \resetlang
 }
 
-
 \def\logos{
     \noindent
-    \raisebox{-.5\height}{\includegraphics[width=2.2cm]{logo-unicamp.eps}}
+    \raisebox{-.5\height}{\includegraphics[width=2.2cm]{logo-unicamp.pdf}}
 
     \vspace*{2cm}
     
@@ -413,7 +412,7 @@
 \def\cathpage{
   \ifx\@fichacatalografica\relax
   Na versão final, esta página será substituída pela
-  ficha catalográfica na dissertação de mestrado e ou na
+  ficha catalográfica na dissertação de mestrado ou na
   tese de doutorado.
   
   No caso de TCC, deixe essa página em branco.\\
@@ -438,14 +437,7 @@
     \noindent\centerline{\large\MakeUppercase{\textbf{Folha de Aprovação}}}
     \vskip 20mm
     
-    Abaixo se apresentam os membros da comissão julgadora da sessão pública de defesa
-de dissertação para o Título de \@degnamept\xspace na área de concentração de \@areaConcentracao, a
-que submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@autora\fi, em 
-\@dia\xspace de
-\ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or
-      junho\or julho\or agosto\or setembro\or outubro\or novembro\or
-      dezembro\fi\xspace de 
-\@ano\xspace na Faculdade de Tecnologia -- FT/UNICAMP, em Limeira/SP.
+    Abaixo se apresentam os membros da comissão julgadora da sessão pública de defesa de dissertação para o Título de \@degnamept\xspace na área de concentração de \@areaConcentracao, a que submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@autora\fi, em \@dia\xspace de \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or       junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de \@ano\xspace na Faculdade de Tecnologia -- FT/UNICAMP, em Limeira/SP.
 
     \vfill
 
@@ -539,6 +531,7 @@ que submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@
 %controle de linhas órfãs e viúvas.
 \widowpenalty10000
 \clubpenalty10000
+
 
 %comandos específicos para Figuras, Tabelas, Seções etc.
 \newcommand{\Capitulo}[1] {Capítulo~\ref{#1}}
