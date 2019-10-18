@@ -31,7 +31,7 @@ Lattes CV:    http://lattes.cnpq.br/9343261628675642
 
 ORCID: [0000-0002-6520-9740](https://orcid.org/0000-0002-6520-9740)
 
-Última versão: 03/Setembro/2019
+Última versão: 18/Outubro/2019
 
 Esse software está em um repositório indexado pelo Zenodo e pode ser acessado com o DOI a seguir 
 
