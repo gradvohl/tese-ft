@@ -17,21 +17,22 @@ Aqui um exemplo de como referenciar a \Tabela{tab:tabela_1}. Note que é preciso
 \caption[Legenda curta da tabela]{Legenda longa e mais detalhada da tabela.}
 \label{tab:tabela_1}
 \begin{center}
-\begin{tabular}{|c|c|}
-\hline
-Coluna 1 & Coluna2 \\ \hline\hline
-a & b \\\hline
-c & d \\\hline
+\begin{tabular}{cc}
+\toprule % Linha superior
+Coluna 1 & Coluna2 \\ \midrule % Linha do meio 
+a & b \\
+c & d \\
+e & f \\\bottomrule % Linha inferior
 \end{tabular}
 \end{center}
 \end{table}
 
 As tabelas mais complexas podem ser feitas com ajuda no site \href{http://www.tablesgenerator.com}{http://www.tables\-ge\-ne\-ra\-tor.com}.
 
-Veja um exemplo de equação no próprio texto, e.g., $x=\frac{\sqrt[y]{a^{2}+b^{2}}}{\sigma}$.  Se você preferir, pode escrever a equação de forma estendida, conforme a \Equacao{eq:teste} a seguir. Note que o rótulo é colocado automaticamente.
+Veja um exemplo de equação no próprio texto, e.g., $x=\frac{\sqrt{a^{2}+b^{2}}}{\sigma}$.  Se você preferir, pode escrever a equação de forma estendida, conforme a \Equacao{eq:teste} a seguir. Note que o rótulo é colocado automaticamente.
 
 \begin{equation}
-x=\frac{\sqrt[y]{a^{2}+b^{2}}}{\sigma}
+x=\frac{\sqrt{a^{2}+b^{2}}}{\sigma}
 \label{eq:teste}
 \end{equation}
 
@@ -49,21 +50,25 @@ Veja na \Secao{sec:exemplo_secao} a seguir como referenciar uma seção. Também
 % caso seja necessário referenciar essa seção
 % posteriormente.
 \section{Exemplo de seção}\label{sec:exemplo_secao} 
-Agora observe como se faz uma citação de artigo científico em periódico \cite{Gradvohl2014c}. De acordo com \textcite{Gradvohl2016}, essa é uma citação direta. Se for citar mais de um trabalho, faça da seguinte forma \cite{ZAMBON2015, Gradvohl2015}. As referências bibliográficas estão no arquivo \texttt{bibliografia.bib}
+Agora observe como se faz uma citação de artigo científico em periódico \cite{Gradvohl2014c}. De acordo com \textcite{Gradvohl2016}, essa é uma citação direta. Se for citar mais de um trabalho, faça da seguinte forma \cite{Caldana2017,Gradvohl2015}. As referências bibliográficas estão no arquivo \texttt{bibliografia.bib}
 
-Veja a seguir o comando para criar uma figura e o resultado, na \Figura{fig:xwing}.
+Veja a seguir o comando para criar uma figura e o resultado, na \Figura{fig:xwing}. Dica importante: sempre que possível, use figuras no formato PDF. De acordo com o Overleaf, isso acelera a compilação do texto, sem perder a qualidade da figura.
 
 \begin{figure}[!htb]
 \centering
 %As figuras estão na pasta figuras.
+% Se seu texto estiver demorando muito para compilar, 
+% use figuras no formato PDF ou PNG.
 \includegraphics[scale=0.2]{starwars21280.jpg}
 \caption[Legenda curta de figura]{Legenda mais extensa de figura.}
 \label{fig:xwing}
 \end{figure}
 
 \subsection{Exemplo de subseção}
-É importante evitar chegar a esse nível de subseção. Dois níveis é suficiente. Use essa opção em último caso, apenas.
+É importante evitar chegar a esse nível de subseção. Dois níveis são suficientes. Use essa opção em último caso, apenas.
 
-% O comando a seguir gera um "dummy text". 
-% Elimine-o quando escrever sua dissertação.
-\lipsum[5]
+
+\subsection{Exemplo de adição de siglas}
+Para adicionar uma sigla ou abreviatura na lista de siglas e abreviaturas, use o comando ``\textbackslash{}Sigla\{nome por extenso\}\{abreviatura\}'' ou ``\textbackslash{}SiglaHifen\{nome por extenso\}\{abreviatura\}'' para adicionar a sigla com hífen. 
+Por exemplo, respectivamente, \Sigla{Ácido Desoxirribonucleico}{DNA} ou \SiglaHifen{Ácido Desoxirribonucleico}{DNA}. A lista de siglas é adicionada automaticamente.
+

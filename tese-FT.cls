@@ -9,21 +9,22 @@
 %
 % Este arquivo de classe de documento e seu respectivo modelo 
 % foram adaptado do modelo de teses e dissertações do 
-% Instituto de Computação da UNICAMP.
+% Instituto de Computação da UNICAMP e estão de acordo com a 
+% Norma CPG 001/2019..
 %
 % Autor: André Leon Sampaio Gradvohl, Dr.
 % Email:     gradvohl@ft.unicamp.br
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 18/Outubro/2019
+% Última versão: 24/janeiro/2019
 %
 % Adições/Alterações nesta última versão:
-% - Ajustes na seção de referências bibliográficas:
-%   -- Adição de opção para alinhamento justificado na bibliografia.
-%   -- Bibliografia com espaçamento simples e espaço entre as 
-%      referências para melhor leitura.
-% - Atualização do logo da Unicamp de eps para pdf.
+% - Adição do comando \Sigla{}{} e \SiglaHifen{}{} para adição de 
+%   siglas na lista de siglas.
+% - Adição da opção Draft (com letra maiúscula) para uma 
+%   compilação mais rápida, deixando de mostrar as figuras.
+% - Menção à Norma CPG 001/2019.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{tese-FT}[]
@@ -42,6 +43,10 @@
   \thesislanguage{2}
   \typeout{tese-FT: portugues.}
 }
+\DeclareOption{Draft}{
+  \finalversionfalse
+  \typeout{tese-FT: Draft.}
+}
 \newif\iffinalversion
 \DeclareOption{Final}{
   \finalversiontrue
@@ -51,7 +56,13 @@
 \ProcessOptions\relax
 
 % Classe base: Relatório
-\LoadClass[12pt,a4paper]{report}
+% Se for a versão final, inclui as figuras
+\iffinalversion
+  \LoadClass[12pt,a4paper]{report}
+\else %Caso contrário, não mostre as figuras.
+  \LoadClass[12pt,a4paper,draft]{report}
+  \usepackage[allfiguresdraft]{draftfigure}
+\fi
 %
 %Pacotes padrão para as línguas usadas no texto.
 \RequirePackage[english,spanish,portuguese,brazil]{babel}
@@ -544,3 +555,7 @@
 \newcommand{\ie}{i.\,e.\xspace}
 \newcommand{\eg}{e.\,g.\xspace}
 \newcommand{\pex}{p.\,ex.\xspace}
+
+%Comandos para adição de siglas 
+\newcommand{\Sigla}[2]{#1 (#2)\nomenclature{#2}{#1}}
+\newcommand{\SiglaHifen}[2]{#1 -- #2\nomenclature{#2}{#1}}
