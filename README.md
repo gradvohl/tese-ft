@@ -3,11 +3,11 @@ Este é um modelo Latex para monografias de Trabalhos de Conclusão de Curso (TC
 
 Esse modelo e seu respectivo arquivo de classe de documento foram adaptado do modelo de teses e dissertações do Instituto de Computação da UNICAMP.
 
-A utilização desse modelo é livre e está de acordo com a última versão das **Normas para impressão de teses/dissertações da UNICAMP (CCPG 002/2018)**.
+A utilização desse modelo é livre e está de acordo com a última versão das **Normas para impressão de teses/dissertações da UNICAMP (CCPG 001/2019)**.
 
 Você também poderá utilizar esse modelo diretamente no [Overleaf](https://www.overleaf.com), um site que permite a edição de textos no LaTeX de forma bem prática.
 
-O modelo no site Overleaf está disponível em neste [link](https://www.overleaf.com/latex/templates/template-para-teses-e-dissertacoes-na-ft-slash-unicamp/rwmpsjnbtdzf) ou procure por **Template para teses e dissertações na FT/UNICAMP**. Verifique se está na última versão (18/Outubro/2019).
+O modelo no site Overleaf está disponível em neste [link](https://www.overleaf.com/latex/templates/template-para-teses-e-dissertacoes-na-ft-slash-unicamp/rwmpsjnbtdzf) ou procure por **Template para teses e dissertações na FT/UNICAMP**. Verifique se está na última versão (24/Janeiro/2020).
 
 ## Arquivos que você vai utilizar
 :no_entry_sign:Você **não** deve mexer no arquivo tese-FT.cls. Nele estão os comandos para a devida formatação do texto.
@@ -31,7 +31,7 @@ Lattes CV:    http://lattes.cnpq.br/9343261628675642
 
 ORCID: [0000-0002-6520-9740](https://orcid.org/0000-0002-6520-9740)
 
-Última versão: 18/Outubro/2019
+Última versão: 24/Janeiro/2020
 
 Esse software está em um repositório indexado pelo Zenodo e pode ser acessado com o DOI a seguir 
 
