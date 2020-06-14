@@ -17,14 +17,20 @@
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 24/janeiro/2019
+% Última versão: 14/junho/2020
 %
 % Adições/Alterações nesta última versão:
-% - Adição do comando \Sigla{}{} e \SiglaHifen{}{} para adição de 
-%   siglas na lista de siglas.
-% - Adição da opção Draft (com letra maiúscula) para uma 
-%   compilação mais rápida, deixando de mostrar as figuras.
-% - Menção à Norma CPG 001/2019.
+% - Adição de informações sobre a inclusão do arquivo com a 
+%   ficha catalográfica ou página em branco.
+% - Ajustes no idioma para a lista de abreviações e siglas.
+% - Adequações na lista de símbolos.
+% - Inclusão do pacote silence para suprimir os "warnings" 
+%   referentes à inclusão do arquivo "brazilian-abnt". 
+% - Adição da opção "noFig" para acelerar a compilação, sem 
+%   a adição de figuras. Use apenas junto com a opção Draft.
+% - Adição de comandos para referenciar múltiplos capítulos, 
+%   seções, figuras, tabelas, equações.
+% - Adição de citação a software na bibliografia.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{tese-FT}[]
@@ -53,15 +59,27 @@
   \typeout{tese-FT: versao final.}
 }
 
+\newif\ifnofig
+\DeclareOption{noFig}{
+  \nofigtrue
+  \typeout{tese-FT: Draft without figures.}
+}
+
 \ProcessOptions\relax
 
 % Classe base: Relatório
 % Se for a versão final, inclui as figuras
 \iffinalversion
   \LoadClass[12pt,a4paper]{report}
-\else %Caso contrário, não mostre as figuras.
+  % Pacote Silence para ocultar a advertência para o brazilian-abnt.
+  % Use a opção "[debrief]" para inspecionar melhor o documento.
+  \RequirePackage{silence}
+  \WarningsOff[biblatex]
+\else %Caso contrário, segue no formato Draft.
   \LoadClass[12pt,a4paper,draft]{report}
+  \ifnofig %Se nofig estiver ativado, não inclua as figuras.
   \usepackage[allfiguresdraft]{draftfigure}
+  \fi
 \fi
 %
 %Pacotes padrão para as línguas usadas no texto.
@@ -79,7 +97,7 @@
 \PassOptionsToPackage{table}{xcolor}
 %Pacotes para incluir os hiperlinks no texto
 \RequirePackage{hyperref}
-%Mantenha o pacote a seguir para incluir a lista de símbolos.
+%Mantenha o pacote a seguir para incluir a lista de abreviaturas.
 \RequirePackage{nomencl} \makenomenclature
 \RequirePackage{pdfpages}
 \RequirePackage{xspace}
@@ -93,6 +111,9 @@
 %Pacote para tabelas mais interessantes
 \RequirePackage{booktabs}
 \renewcommand{\arraystretch}{1.2}
+%Teste com pacote listofitems
+\RequirePackage{listofitems}
+\RequirePackage{ifthen}
 %
 % Definição de novos comandos
 \newcommand{\@FT}{Faculdade de Tecnologia}
@@ -292,6 +313,17 @@
 
   \@textoaviso
 
+  %Definição de títulos específicos, dependendo do idioma
+  \ifcase\@thesislanguage\relax
+  %English
+  \renewcommand{\nomname}{List of Acronyms}
+  \or%Español
+  \renewcommand{\nomname}{Lista de abreviaturas y acrónimos}
+  \or%Português 
+  \renewcommand{\nomname}{Lista de Abreviaturas e Siglas}
+  \fi
+%}
+
   \clearpage
   \approvalpage
   \clearpage
@@ -426,8 +458,22 @@
   ficha catalográfica na dissertação de mestrado ou na
   tese de doutorado.
   
-  No caso de TCC, deixe essa página em branco.\\
-  Adicione o arquivo PDF com a ficha catalográfica no comando \textbackslash\texttt{fichacatalografica\{\,\}} no arquivo principal.
+  \phantom{linha em branco}
+  
+  No caso de TCC, deixe essa página em branco.
+  
+  \phantom{linha em branco}
+  
+  Adicione o arquivo PDF com a ficha catalográfica no comando \textbackslash\texttt{fichacatalografica\{\,\}} no arquivo principal (\texttt{tese.tex}). Caso a versão da sua dissertação ou tese seja a  versão antes da aprovação pela banca, você pode substituir esta por uma página em branco com o comando a seguir:
+  
+  \begin{center}
+      \textbackslash\texttt{fichacatalografica\{branco.pdf\}}
+  \end{center}
+      
+      Substitua o arquivo \texttt{branco.pdf} por \texttt{white.pdf}, nos textos em inglês, ou por \texttt{blanco.pdf}, para textos em espanhol.
+  
+  \phantom{linha em branco}
+  
   
   De acordo com o padrão da CCPG: ``Quando se tratar de Teses e
   Dissertações financiadas por agências de fomento, os beneficiados
@@ -448,7 +494,7 @@
     \noindent\centerline{\large\MakeUppercase{\textbf{Folha de Aprovação}}}
     \vskip 20mm
     
-    Abaixo se apresentam os membros da comissão julgadora da sessão pública de defesa de dissertação para o Título de \@degnamept\xspace na área de concentração de \@areaConcentracao, a que submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@autora\fi, em \@dia\xspace de \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or       junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de \@ano\xspace na Faculdade de Tecnologia -- FT/UNICAMP, em Limeira/SP.
+    Abaixo se apresentam os membros da comissão julgadora da sessão pública de defesa de dissertação para o Título de \@degnamept\xspace na área de concentração \@areaConcentracao, a que se submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@autora\fi, em \@dia\xspace de \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de \@ano\xspace na Faculdade de Tecnologia -- FT/UNICAMP, em Limeira/SP.
 
     \vfill
 
@@ -543,13 +589,34 @@
 \widowpenalty10000
 \clubpenalty10000
 
-
-%comandos específicos para Figuras, Tabelas, Seções etc.
+%Filtragem dos parâmetros para múltiplas referências.
+\newcounter{cnt}
+\newcommand{\procitems}[1] {%
+  \setcounter{cnt}{1}%
+  \setsepchar{,}%
+  \readlist*\argumentos{#1}%
+  \ifthenelse{\argumentoslen>1}{%
+      \whiledo{\argumentoslen>\the\numexpr\value{cnt}+1\relax}{%
+         \ref{\argumentos[\value{cnt}]},\xspace
+         \stepcounter{cnt}%
+     }%
+     \ref{\argumentos[-2]} e \ref{\argumentos[-1]}%
+    }{% else
+       \ref{\argumentos[1]}%
+    }%
+}%
+%
+%comandos específicos para referenciar Figuras, Tabelas, Seções etc.
 \newcommand{\Capitulo}[1] {Capítulo~\ref{#1}}
-\newcommand{\Equacao}[1] {Equação~\ref{#1}}
-\newcommand{\Figura}[1]{Figura~\ref{#1}}
+\newcommand{\capitulos}[1]{capítulos \procitems{#1}}
 \newcommand{\Secao}[1] {Seção~\ref{#1}}
+\newcommand{\secoes}[1]{seções \procitems{#1}}
+\newcommand{\Figura}[1]{Figura~\ref{#1}}
+\newcommand{\figuras}[1]{figuras \procitems{#1}}
 \newcommand{\Tabela}[1] {Tabela~\ref{#1}}
+\newcommand{\tabelas}[1]{tabelas \procitems{#1}}
+\newcommand{\Equacao}[1] {Equação~\ref{#1}}
+\newcommand{\equacoes}[1]{equações \procitems{#1}}
 
 %Comandos para abreviações especiais
 \newcommand{\ie}{i.\,e.\xspace}

@@ -4,10 +4,11 @@
 % posteriormente.
 \chapter{Introdução}\label{chp:Introducao}
 
-% O comando a seguir gera um "dummy text". 
-% Elimine-o quando escrever sua dissertação.
-\lipsum[1]
+Esse é um texto de exemplo para o modelo de teses e dissertações da Faculdade de Tecnologia (FT) da UNICAMP. Esse modelo se aplica às teses de doutorado, dissertações de mestrado e Trabalhos de Conclusão de Curso, para a graduação (dos cursos de informática da FT).
 
+A seguir, estão alguns exemplos para os elementos mais comuns em textos acadêmicos, \ie tabelas, equações e figuras.
+
+\section{Exemplos de Tabelas e Equações}\label{sec:exemplostabelas}
 Aqui um exemplo de como referenciar a \Tabela{tab:tabela_1}. Note que é preciso definir um rótulo (\textit{label}) dentro do comando de definição da tabela.
 
 % Veja a seguir um exemplo de Tabela.
@@ -29,7 +30,7 @@ e & f \\\bottomrule % Linha inferior
 
 As tabelas mais complexas podem ser feitas com ajuda no site \href{http://www.tablesgenerator.com}{http://www.tables\-ge\-ne\-ra\-tor.com}.
 
-Veja um exemplo de equação no próprio texto, e.g., $x=\frac{\sqrt{a^{2}+b^{2}}}{\sigma}$.  Se você preferir, pode escrever a equação de forma estendida, conforme a \Equacao{eq:teste} a seguir. Note que o rótulo é colocado automaticamente.
+Veja um exemplo de equação no próprio texto, \eg, $x=\frac{\sqrt{a^{2}+b^{2}}}{\sigma}$.  Se você preferir, pode escrever a equação de forma estendida, conforme a \Equacao{eq:teste} a seguir. Note que o rótulo é colocado automaticamente.
 
 \begin{equation}
 x=\frac{\sqrt{a^{2}+b^{2}}}{\sigma}
@@ -38,21 +39,20 @@ x=\frac{\sqrt{a^{2}+b^{2}}}{\sigma}
 
 Você também pode obter ajudar para escrever as equações em \LaTeX no site \url{http://www.codecogs.com/latex/eqneditor.php}.
 
-Note que podemos incluir automaticamente alguns termos na lista de símbolos no pré-texto. Veja exemplos a seguir no código fonte. Eles não aparecerão no arquivo gerado. 
+% Note que podemos incluir automaticamente alguns termos na lista de abreviaturas e siglas no pré-texto. Veja exemplos a seguir no código fonte. 
 
-\nomenclature{$a$}{Valor obtido a partir de um termo}%
-\nomenclature{$b$}{Outro valor obtido a partir de outro termo}%
+% A sigla \Sigla{abêcê}{ABC} aparecerá automaticamente na lista de abreviaturas e siglas no pré-texto. Do mesmo modo, podemos usar o comando \SiglaHifen{xisipsilonzê}{XYZ} separado por hífen ao invés de aparecer entre parênteses.
 
-Veja na \Secao{sec:exemplo_secao} a seguir como referenciar uma seção. Também será preciso definir um rótulo (\textit{label}) logo após o comando \texttt{$\backslash$section}.
+Veja na \Secao{sec:exemplo_secao} a seguir como referenciar uma seção. Também será preciso definir um rótulo (\textit{label}) logo após o comando \texttt{\textbackslash section}.
 
 % Aqui começa uma Seção.
 % Use o comando \label para definir um rótulo, 
 % caso seja necessário referenciar essa seção
 % posteriormente.
 \section{Exemplo de seção}\label{sec:exemplo_secao} 
-Agora observe como se faz uma citação de artigo científico em periódico \cite{Gradvohl2014c}. De acordo com \textcite{Gradvohl2016}, essa é uma citação direta. Se for citar mais de um trabalho, faça da seguinte forma \cite{Caldana2017,Gradvohl2015}. As referências bibliográficas estão no arquivo \texttt{bibliografia.bib}
+Agora observe como se faz uma citação de artigo científico em periódico \cite{Gradvohl2014c}. De acordo com \textcite{Gradvohl2016}, essa é uma citação direta. Se for citar mais de um trabalho, faça da seguinte forma \cite{Caldana2017,Gradvohl2015}. As referências bibliográficas estão no arquivo \texttt{bibliografia.bib}. Outros exemplos de citações também se encontram nesse arquivo.
 
-Veja a seguir o comando para criar uma figura e o resultado, na \Figura{fig:xwing}. Dica importante: sempre que possível, use figuras no formato PDF. De acordo com o Overleaf, isso acelera a compilação do texto, sem perder a qualidade da figura.
+Veja a seguir o comando para criar uma figura e o resultado, na \Figura{fig:xwing}. Note, no código fonte, que no comando \texttt{caption} podemos estabelecer uma \enquote{legenda curta} para aparecer na Lista de Figuras. A legenda curta é opcional.
 
 \begin{figure}[!htb]
 \centering
@@ -64,11 +64,23 @@ Veja a seguir o comando para criar uma figura e o resultado, na \Figura{fig:xwin
 \label{fig:xwing}
 \end{figure}
 
+Dica importante: sempre que possível, use figuras no formato PDF. De acordo com o Overleaf, isso acelera a compilação do texto, sem perder a qualidade da figura.
+
 \subsection{Exemplo de subseção}
 É importante evitar chegar a esse nível de subseção. Dois níveis são suficientes. Use essa opção em último caso, apenas.
 
 
-\subsection{Exemplo de adição de siglas}
-Para adicionar uma sigla ou abreviatura na lista de siglas e abreviaturas, use o comando ``\textbackslash{}Sigla\{nome por extenso\}\{abreviatura\}'' ou ``\textbackslash{}SiglaHifen\{nome por extenso\}\{abreviatura\}'' para adicionar a sigla com hífen. 
-Por exemplo, respectivamente, \Sigla{Ácido Desoxirribonucleico}{DNA} ou \SiglaHifen{Ácido Desoxirribonucleico}{DNA}. A lista de siglas é adicionada automaticamente.
+\subsection{Exemplo de adição de siglas}\label{subsec:siglas}
+Para adicionar uma sigla ou abreviatura na lista de siglas e abreviaturas, use o comando ``\texttt{\textbackslash{}Sigla\{nome por extenso\}\{abreviatura\}}'' ou ``\texttt{\textbackslash{}SiglaHifen\{nome por extenso\}\{abreviatura\}}'' para adicionar a sigla com hífen. 
+Por exemplo, respectivamente, \Sigla{Ácido Desoxirribonucleico}{DNA} ou \SiglaHifen{Ácido Ribonucleico}{RNA}. A lista de siglas é adicionada automaticamente.
 
+\section{Comandos opcionais para facilitar}
+Este modelo também criou alguns comandos adicionais não apenas para facilitar o trabalho de quem escreve, mas também para manter uma formatação mais consistente.
+
+Entre esses comandos estão o \texttt{\textbackslash{}ie} que inclui a abreviatura ``\ie'' no texto (equivalente ao ``isto é''). Usar esse comando vai garantir que a abreviatura não se separe entre linhas e que o espaço entre o `.' e a próxima letra seja fixo. O mesmo vale para os comandos \texttt{\textbackslash{}eg} que inclui a abreviatura ``\eg'' e \texttt{\textbackslash{}pex} que inclui a abreviatura ``\pex''.
+
+Também existem os comandos \texttt{\textbackslash{}Capitulo\{rótulo do capítulo\}}, \texttt{\textbackslash{}Equacao\{rótulo da equação\}}, \texttt{\textbackslash{}Figura\{rótulo do figura\}}, \texttt{\textbackslash{}Secao\{rótulo da seção\}} e \texttt{\textbackslash{}Tabela\{rótulo da tabela\}}. Esses comandos inserem referências para os respectivos elementos. Além disso, no próprio texto aparece a \textit{string} (``Capítulo'', ``Equação'', ``Figura'' etc) seguida da referência já com o link. Por exemplo, \Secao{sec:exemplo_secao}. Sugere-se a utilização desses comandos para referenciar os respectivos elementos ao invés do comando \texttt{\textbackslash{}ref\{rótulo\}}. Assim, o texto ficará mais uniforme. 
+
+É possível também usar esses comandos nas versões no plurall para conjuntos de referências. Por exemplo, para referenciar várias seções, você pode utilizar o comando \texttt{\textbackslash{}secoes\{rótulo\_1, rótulo\_2, rótulo\_3\}}.
+
+Por exemplo, suponha que queiramos referenciar as \secoes{sec:exemplostabelas,sec:exemplo_secao,subsec:siglas}.

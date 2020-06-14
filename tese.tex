@@ -18,25 +18,36 @@
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 24/janeiro/2019
+% Última versão: 14/junho/2020
 %
 % Adições/Alterações nesta última versão:
-% - Adição do comando \Sigla{}{} e \SiglaHifen{}{} para adição de 
-%   siglas na lista de siglas.
-% - Adição da opção Draft (com letra maiúscula) para uma 
-%   compilação mais rápida, deixando de mostrar as figuras.
-% - Menção à Norma CPG 001/2019.
+% - Adição de informações sobre a inclusão do arquivo com a 
+%   ficha catalográfica ou página em branco.
+% - Ajustes no idioma para a lista de abreviações e siglas.
+% - Adequações na lista de símbolos.
+% - Inclusão do pacote silence para suprimir os "warnings" 
+%   referentes à inclusão do arquivo "brazilian-abnt". 
+% - Adição da opção "noFig" para acelerar a compilação, sem 
+%   a adição de figuras. Use apenas junto com a opção Draft.
+% - Adição de comandos para referenciar múltiplos capítulos, 
+%   seções, figuras, tabelas, equações.
+% - Adição de citação a software na bibliografia.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Escolha: Portugues ou Ingles ou Espanhol.
 % Para a versão final do texto, acrescente a palavra "Final".
 \documentclass[Portugues,Final]{tese-FT}
-% Para uma compilação mais rápida, utilize a opção "Draft", em
-% letras maiúsculas como a seguir. Essa opção deixa de mostrar
-% as figuras e, portanto, acelera a compilação.
-%\documentclass[Portugues,Draft]{tese-FT}
 %\documentclass[Ingles,Final]{tese-FT}
 %\documentclass[Espanhol,Final]{tese-FT}
+%
+% Para uma compilação mais rápida, utilize a opção "Draft", em
+% letras maiúsculas como a seguir. 
+%\documentclass[Portugues,Draft]{tese-FT}
+% Caso necessário, adicione também a opção "noFig". Essa opção 
+% deixa de mostrar as figuras e, portanto, acelera mais ainda
+% a compilação.
+%\documentclass[Portugues,Draft,noFig]{tese-FT}
+
 
 %Adicione seu arquivo com as referências bibliográficas
 \addbibresource{bibliografia.bib}
@@ -44,10 +55,6 @@
 %O pacote a seguir gera um dummy text. Elimine a linha quando
 % for editar seu texto.
 \usepackage{lipsum}
-
-% Adicione o pacote a seguir, se seu texto tiver uma lista de 
-% símbolos. Não confunda com a lista de abreviaturas.
-%\usepackage[symbols,nogroupskip,sort=none]{glossaries-extra}
 
 \begin{document}
 
@@ -70,7 +77,7 @@
 %\coorientador{Prof. Dr. Eng. Lic. Nome do Co-Orientador}
 %\coorientadora{Prof. Dra. Eng. Lic. Nome da Co-Orientadora}
 
-% Escolha entre uma das quatro opções a seguir (comente as demais):
+% Escolha entre uma das seis opções a seguir (comente as demais):
 %\bsi         % para Trabalho de Conclusão de Curso em BSI
 %\tads        % para Trabalho de Conclusão de Curso em TADS
 %\qualificacaoMestrado  % Para textos de qualificação de mestrado.
@@ -87,8 +94,9 @@
 %\cotutela{Universidade Nova de Plutão}
 
 % Defina a data da defesa no formato {Dia}{Mês}{Ano}
-% Use apenas números. O template transformará em palavras, se necessário.
-\datadadefesa{18}{10}{2019}
+% Use apenas números! O template transformará em palavras,
+% se necessário.
+\datadadefesa{12}{6}{2020}
 
 % Para a versão final defina:
 % Repita o nome do Orientador(a) no primeiro avaliador
@@ -102,17 +110,25 @@
 % \avaliadorH{Prof. Dr. Oitavo Avaliador}{Instituição do oitavo avaliador}
 
 % Para incluir a ficha catalográfica em PDF na versão final, 
-% copie o arquivo PDF, descomente e ajuste a linha a seguir:
-%\fichacatalografica{arquivo.pdf}
+% copie o arquivo PDF para o projeto no Overleaf, descomente 
+% e informe o nome do arquivo no comando a seguir.
+% \fichacatalografica{SeuArquivo.pdf}
+%
+% Para deixar uma página em branco no lugar da ficha 
+% catalográfica, descomente uma das três linhas a seguir:
+%\fichacatalografica{branco.pdf} % Português
+%\fichacatalografica{white.pdf}  % Inglês
+%\fichacatalografica{blanco.pdf} % Espanhol
 
 % Este comando deve ficar aqui:
 \paginasiniciais
 
-% Se houver dedicatória, descomente a linha a seguir:
+% Se houver dedicatória, descomente a linha a seguir e 
+% escreva a dedicatória em seguida.
 % \prefacesection{Dedicatória}
 % A dedicatória deve ocupar uma única página.
 %
-%
+
 % Se houver epígrafe, descomente e edite as linhas a seguir:
 % \begin{epigrafe}
 % {\it
@@ -124,8 +140,7 @@
 %
 % \hfill (Hippocrates)
 % \end{epigrafe}
-%
-%
+
 % Adicione no arquivo "agradecimentos.tex" os seus agradecimentos
 % Caso prefira omitir os agradecimentos, comente a linha a seguir.
 \input{agradecimentos}
@@ -151,20 +166,23 @@ The abstract must have at most 500 words and must fit in a single page.
 % A lista de tabelas:
 \listoftables
 
-% A lista de símbolos é opcional. Não confunda a lista de símbolos
-% com a lista de abreviaturas.
-%\input{listaSimbolos}
+% A lista de símbolos é opcional. Não confunda a lista de símbolos 
+% matemáticos com a lista de abreviaturas (que vem depois).
+\input{listaSimbolos}
 
 % A lista de abreviações e siglas vem a seguir.
 % Dê uma olhada no pacote nomencl para ver os comandos para 
 % adicionar abreviações e siglas no texto.
-\renewcommand{\nomname}{Lista de Abreviações e Siglas}
+% Foram adicionados os comandos \Sigla{Sigla por extenso}{abrev} e 
+% \SiglaHifen{Sigla por extenso}{abrev} para adicionar as siglas 
+% diretamente no texto e criar a lisa de abreviaturas 
+% automaticamente
 \printnomenclature[3cm]
 
 % O sumário vem aqui:
 \tableofcontents
 
-% E esta linha deve ficar bem aqui:
+% E a linha a seguir deve ficar bem aqui. Não mude.
 \fimdaspaginasiniciais
 
 % O corpo da dissertação ou tese começa aqui:
@@ -192,10 +210,13 @@ The abstract must have at most 500 words and must fit in a single page.
 % Comandos para incluir as referências bibliográficas
 % Define espaçamento simples em cada referência
 \begin{singlespacing}
+
 % Adiciona uma linha em branco entre duas referências
 \setlength\bibitemsep{10pt}   
-
-% Adiciona as referências bibliográficas
+%
+% Adiciona as referências bibliográficas.
+% Mude o título (title), caso o texto seja em inglês 
+% ou espanhol.
 \printbibliography[heading=bibintoc, % Adiciona no sumário
                    title={Referências bibliográficas} % Nome do Capítulo
                   ]
@@ -209,5 +230,5 @@ The abstract must have at most 500 words and must fit in a single page.
 % na linha anterior
 % Detalhe: não precisa incluir a extensão .tex
 \include{apendices}
-
+%
 \end{document}
