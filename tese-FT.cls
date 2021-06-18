@@ -8,29 +8,19 @@
 % Universidade Estadual de Campinas (UNICAMP).
 %
 % Este arquivo de classe de documento e seu respectivo modelo 
-% foram adaptado do modelo de teses e dissertações do 
+% foram adaptados do modelo de teses e dissertações do 
 % Instituto de Computação da UNICAMP e estão de acordo com a 
-% Norma CPG 001/2019..
+% Instrução Normativa CPG 002/2021.
 %
 % Autor: André Leon Sampaio Gradvohl, Dr.
-% Email:     gradvohl@ft.unicamp.br
+% Email:     gradvohl@unicamp.br
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 14/junho/2020
+% Última versão: 18/junho/2021
 %
 % Adições/Alterações nesta última versão:
-% - Adição de informações sobre a inclusão do arquivo com a 
-%   ficha catalográfica ou página em branco.
-% - Ajustes no idioma para a lista de abreviações e siglas.
-% - Adequações na lista de símbolos.
-% - Inclusão do pacote silence para suprimir os "warnings" 
-%   referentes à inclusão do arquivo "brazilian-abnt". 
-% - Adição da opção "noFig" para acelerar a compilação, sem 
-%   a adição de figuras. Use apenas junto com a opção Draft.
-% - Adição de comandos para referenciar múltiplos capítulos, 
-%   seções, figuras, tabelas, equações.
-% - Adição de citação a software na bibliografia.
+% - Ajuste na Primeira Folha (capa)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{tese-FT}[]
@@ -332,21 +322,21 @@
 }
 
 \def\logos{
-    \noindent
-    \raisebox{-.5\height}{\includegraphics[width=2.2cm]{logo-unicamp.pdf}}
-
-    \vspace*{2cm}
-    
-    \noindent
-    \begin{center} \large
-        \MakeUppercase{\@UNICAMP}\\
-        \@FT
-    \end{center}
+    {\parbox[c]{0cm}{\includegraphics[width=2.2cm]{logo-unicamp.pdf}}}
+       {\parbox[c]{\textwidth}
+       {
+         \noindent
+         \centering{
+           \large \MakeUppercase{\@UNICAMP}\\
+                   \@FT}
+       }
+           
+       }
 }
 
 \def\openningpage{
   \logos
-  \vskip 35mm
+  \vskip 70mm%35mm
   \begin{center}
     \Large
     {\bf \if\@autora\relax\@autor\else\@autora\fi}
@@ -433,7 +423,7 @@
   \iffinalversion
     \begin{minipage}[t]{0.5\textwidth}
       \supresshyphen
-      Este exemplar corresponde à versão final da \@monopt\xspace defendida por
+      Este trabalho corresponde à versão final da \@monopt\xspace defendida por
       \if\@autora\relax\@autor\else\@autora\fi\xspace e orientada
       \if\@orientadora\relax pelo \@orientador\else pela \@orientadora\fi.
     \end{minipage}
@@ -516,7 +506,7 @@
     \vfill
       \supresshyphen
       \noindent
-       Ata da defesa, assinada pelos membros da Comissão Examinadora, consta no SIGA/Sistema de Fluxo de Dissertação/Tese e na Secretaria de Pós Graduação da FT.
+       Ata da defesa, assinada pelos membros da Comissão Examinadora, encontra-se no SIGA/Sistema de Fluxo de Dissertação/Tese e na Secretaria de Pós Graduação da Faculdade de Tecnologia.
     \vfill
   \else
     Na versão final, esta página será substituída por outra
