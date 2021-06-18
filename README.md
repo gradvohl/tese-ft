@@ -1,5 +1,5 @@
 # Modelo para Teses e Dissertações na FT-UNICAMP
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/) ![OverleafReady](https://img.shields.io/badge/Ready_for-Overleaf-success) ![Apache license](https://img.shields.io/badge/license-Apache%202.0-blue)
+[![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/) ![OverleafReady](https://img.shields.io/badge/Ready_for-Overleaf-success) ![Apache license](https://img.shields.io/badge/license-Apache%202.0-blue) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) 
 
 Este é um modelo LaTeX para monografias de Trabalhos de Conclusão de Curso (TCC) na graduação, dissertações de Mestrado e Teses de doutorado da Faculdade de Tecnologia (FT) da Universidade Estadual de Campinas (UNICAMP).
 
