@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Gradvohl"
+  given-names: "Andre L. S."
+  orcid: "https://orcid.org/0000-0002-6520-9740"
+title: "tese-ft"
+version: 4.0.1
+doi: 10.5281/zenodo.842220
+date-released: 2021-06-18
+url: "https://github.com/gradvohl/tese-ft"
