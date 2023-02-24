@@ -17,10 +17,16 @@
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 18/junho/2021
+% Última versão: 24/fevereiro/2023.
 %
 % Adições/Alterações nesta última versão:
-% - Ajuste na Primeira Folha (capa)
+%% - Adição da opção Turnitin para gerar a tese sem os elementos 
+%%   pré e pós textuais.
+%% - Adição das propriedades na versão em PDF.
+%% - Adição da variável \@nivelEnsino para ajustar o texto sobre a 
+%%   ata de defesa.
+%% - Melhorias nos comandos para epígrafe e dedicatória
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{tese-FT}[]
@@ -55,6 +61,12 @@
   \typeout{tese-FT: Draft without figures.}
 }
 
+\newif\ifturnitin
+\DeclareOption{Turnitin}{
+  \turnitintrue
+  \typeout{tese-FT: versao para o turnitin.}
+}
+
 \ProcessOptions\relax
 
 % Classe base: Relatório
@@ -86,7 +98,10 @@
 \graphicspath{{./logotipos/}{./figuras/}}
 \PassOptionsToPackage{table}{xcolor}
 %Pacotes para incluir os hiperlinks no texto
-\RequirePackage{hyperref}
+\RequirePackage[
+        pdfdisplaydoctitle = true, 
+        pdfstartview={XYZ null null .75} %Abrir em 75% de zoom
+    ]{hyperref}
 %Mantenha o pacote a seguir para incluir a lista de abreviaturas.
 \RequirePackage{nomencl} \makenomenclature
 \RequirePackage{pdfpages}
@@ -142,6 +157,8 @@
   \gdef\@monopt{Dissertação}
   \gdef\@monoes{Dissertacíon}
   \gdef\@monoen{Monograph}
+  
+  \gdef\@nivelEnsino{Graduação}
 }
 
 \gdef\tads{
@@ -160,6 +177,8 @@
   \gdef\@monopt{Dissertação}
   \gdef\@monoes{Dissertacíon}
   \gdef\@monoen{Monograph}
+  
+  \gdef\@nivelEnsino{Graduação}
 }
 %%%%
 \gdef\qualificacaoMestrado{
@@ -178,6 +197,7 @@
   \gdef\@monopt{Monografia de qualificação}
   \gdef\@monoes{Monografía de calificación}
   \gdef\@monoen{Qualification monograph}
+  \gdef\@nivelEnsino{Pós-graduação}
 }
 %%%%
 \gdef\qualificacaoDoutorado{
@@ -196,6 +216,7 @@
   \gdef\@monopt{Monografia de qualificação}
   \gdef\@monoes{Monografía de calificación}
   \gdef\@monoen{Qualification monograph}
+  \gdef\@nivelEnsino{Pós-graduação}
 }
 \gdef\mestrado{
 %added 
@@ -213,6 +234,7 @@
   \gdef\@monopt{Dissertação}
   \gdef\@monoes{Dissertacíon}
   \gdef\@monoen{Thesis}
+  \gdef\@nivelEnsino{Pós-graduação}
 }
 %%%%
 \gdef\doutorado{
@@ -231,6 +253,7 @@
   \gdef\@monopt{Tese}
   \gdef\@monoes{Tesis}
   \gdef\@monoen{Thesis}
+  \gdef\@nivelEnsino{Pós-graduação}
 }
 
 \let\@orientador\relax
@@ -287,6 +310,7 @@
 \let\@areaConcentracao\relax
 \def\areaConcentracao#1{\gdef\@areaConcentracao{#1}}
 
+
 \def\paginasiniciais{
   \newlength{\oldparindent}
   \setlength{\oldparindent}{\parindent}
@@ -296,12 +320,24 @@
   \makeatletter
   \let\ps@mystyle\ps@plain
   \let\ps@plain\ps@empty
+  
+  % Adicao automatica de Propriedades no arquivo PDF.
+  \hypersetup{
+    pdfcreator   = {Criado com o modelo para teses e dissertações da FT, elaborado pelo prof. André Leon S. Gradvohl, Dr.},
+    pdftitle     = {\@titulo},
+    pdfauthor    = {\if\@autora\relax\@autor\else\@autora\fi},
+    pdfsubject   = {\@monopt\xspace apresentada à Faculdade de Tecnologia da Universidade Estadual de Campinas como parte dos requisitos para a obtenção do título de \@degnamept\xspace.}
+  }
+  
   \makeatother
-  \openningpage
-  \clearpage
-  \titlepage
-
-  \@textoaviso
+  \ifturnitin
+    \relax
+  \else 
+     \openningpage
+     \clearpage
+     \titlepage
+     \@textoaviso
+  \fi  
 
   %Definição de títulos específicos, dependendo do idioma
   \ifcase\@thesislanguage\relax
@@ -314,12 +350,17 @@
   \fi
 %}
 
-  \clearpage
-  \approvalpage
-  \clearpage
+  \ifturnitin
+    \relax
+  \else 
+     \clearpage
+     \approvalpage
+     \clearpage
+  \fi
   \setlength{\parindent}{\oldparindent}
   \resetlang
 }
+
 
 \def\logos{
     {\parbox[c]{0cm}{\includegraphics[width=2.2cm]{logo-unicamp.pdf}}}
@@ -450,17 +491,17 @@
   
   \phantom{linha em branco}
   
-  No caso de TCC, deixe essa página em branco.
+  No caso de TCC, deixe essa página em branco conforme as instruções a seguir.
   
   \phantom{linha em branco}
   
-  Adicione o arquivo PDF com a ficha catalográfica no comando \textbackslash\texttt{fichacatalografica\{\,\}} no arquivo principal (\texttt{tese.tex}). Caso a versão da sua dissertação ou tese seja a  versão antes da aprovação pela banca, você pode substituir esta por uma página em branco com o comando a seguir:
+  No arquivo principal (\texttt{tese.tex}), adicione o nome do arquivo PDF com a ficha catalográfica como parâmetro para o comando \textbackslash\texttt{fichacatalografica\{\,\}}. Caso a versão da sua dissertação ou tese seja a versão anterior à aprovação pela banca, você pode substituir esta por uma página em branco com o comando a seguir:
   
   \begin{center}
       \textbackslash\texttt{fichacatalografica\{branco.pdf\}}
   \end{center}
       
-      Substitua o arquivo \texttt{branco.pdf} por \texttt{white.pdf}, nos textos em inglês, ou por \texttt{blanco.pdf}, para textos em espanhol.
+      Substitua o arquivo \texttt{branco.pdf} por \texttt{white.pdf}, nos textos em inglês, ou por \texttt{blanco.pdf}, para textos em espanhol. Todos esses arquivos PDF já estão disponíveis neste modelo. 
   
   \phantom{linha em branco}
   
@@ -503,10 +544,11 @@
        
        \ifx\@avalF\relax\else \noindent \textbf{\@avalF}\newline\@instavalF\fi
     \fi
+    
     \vfill
       \supresshyphen
       \noindent
-       Ata da defesa, assinada pelos membros da Comissão Examinadora, encontra-se no SIGA/Sistema de Fluxo de Dissertação/Tese e na Secretaria de Pós Graduação da Faculdade de Tecnologia.
+       Ata da defesa, assinada pelos membros da Comissão Examinadora, encontra-se no SIGA/Sistema de Fluxo de Dissertação/Tese e na Secretaria de \@nivelEnsino\xspace da Faculdade de Tecnologia.
     \vfill
   \else
     Na versão final, esta página será substituída por outra
@@ -544,8 +586,9 @@
 \renewenvironment{abstract}{\prefacesection{Abstract}\selectlanguage{english}}{\resetlang \newpage}
 \newenvironment{resumen}{\prefacesection{Resumen}\selectlanguage{spanish}}{\resetlang \newpage}
 
-\newenvironment{epigrafe}{\newpage\mbox{}\vfill\hfill\begin{minipage}[t]{0.5\textwidth}}
-{\end{minipage}\newpage}
+\newenvironment{epigrafeformat}{\newpage\mbox{}\vfill\hfill\begin{minipage}[t]{0.5\textwidth}} % Fim do bloco BEGIN.
+                          {\end{minipage}\newpage}
+
 
 \newcommand{\fimdaspaginasiniciais}{
 \newpage
@@ -575,6 +618,38 @@
 \setstretch{1.5} %Definido espaçamento entre linhas de 1,5
 }
 
+% Definição do comando para dedicatoria
+\newcommand{\dedicatoria}[1]{
+    %% O comando \ifturnitin a seguir é obrigatório para o controle 
+    %% da opção "turnitin". Não o remova!!
+    \ifturnitin 
+      \relax
+    \else
+      \pagestyle{empty}
+      \thispagestyle{empty}
+      \vspace*{\fill}
+      \begin{flushright}
+         \begin{minipage}{15em}
+            #1
+         \end{minipage}
+       \end{flushright}
+    \fi
+} % Fim definição comando \dedicatoria
+
+\newcommand{\epigrafe}[2]{
+  \ifturnitin 
+      \relax
+  \else
+     \begin{epigrafeformat}
+       #2
+       % A linha em branco a seguir é importante
+
+       \hfill (#1)
+     \end{epigrafeformat}
+   \fi
+}
+
+
 %controle de linhas órfãs e viúvas.
 \widowpenalty10000
 \clubpenalty10000
@@ -596,7 +671,7 @@
     }%
 }%
 %
-%comandos específicos para referenciar Figuras, Tabelas, Seções etc.
+%Comandos específicos para referenciar Figuras, Tabelas, Seções etc.
 \newcommand{\Capitulo}[1] {Capítulo~\ref{#1}}
 \newcommand{\capitulos}[1]{capítulos \procitems{#1}}
 \newcommand{\Secao}[1] {Seção~\ref{#1}}

@@ -18,10 +18,17 @@
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 18/junho/2021
+% Última versão: 24/fevereiro/2023.
 %
 % Adições/Alterações nesta última versão:
-% - Ajuste na Primeira Folha (capa)
+%% - Adição da opção Turnitin para gerar a tese sem os elementos 
+%%   pré e pós textuais. (Veja exemplo na linha 53 deste arquivo).
+%% - Adição das propriedades na versão em PDF.
+%% - Adição da variável \@nivelEnsino para ajustar o texto sobre a 
+%%   ata de defesa.
+%% - Melhorias nos comandos para epígrafe e dedicatória (linhas 141
+%%   a 145 deste arquivo)
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Escolha: Portugues ou Ingles ou Espanhol.
@@ -33,15 +40,22 @@
 % Para uma compilação mais rápida, utilize a opção "Draft", em
 % letras maiúsculas como a seguir. 
 %\documentclass[Portugues,Draft]{tese-FT}
+%
 % Caso necessário, adicione também a opção "noFig". Essa opção 
 % deixa de mostrar as figuras e, portanto, acelera mais ainda
 % a compilação.
 %\documentclass[Portugues,Draft,noFig]{tese-FT}
+%
+% Caso queira gerar uma versão para avaliação pelo Turnitin,
+% (software utilizado pela Unicamp para emissão do relatório
+% de originalidade), adicione a opção Turnitin conforme o 
+% exemplo da linha a seguir:
+%\documentclass[Portugues,Final,Turnitin]{tese-FT}
 
 %Adicione seu arquivo com as referências bibliográficas
 \addbibresource{bibliografia.bib}
 
-%O pacote a seguir gera um dummy text. Elimine a linha quando
+%O pacote a seguir gera um "dummy text". Elimine a linha quando
 % for editar seu texto.
 \usepackage{lipsum}
 
@@ -85,7 +99,7 @@
 % Defina a data da defesa no formato {Dia}{Mês}{Ano}
 % Use apenas números! O template transformará em palavras,
 % se necessário.
-\datadadefesa{18}{6}{2021}
+\datadadefesa{18}{2}{2023}
 
 % Para a versão final defina:
 % Repita o nome do Orientador(a) no primeiro avaliador
@@ -101,7 +115,9 @@
 % Para incluir a ficha catalográfica em PDF na versão final, 
 % copie o arquivo PDF para o projeto no Overleaf, descomente 
 % e informe o nome do arquivo no comando a seguir.
-% \fichacatalografica{SeuArquivo.pdf}
+%\fichacatalografica{SeuArquivo.pdf}
+% OBSERVAÇÂO: O comando para a ficha catalográfica só é válido 
+% em teses e dissertações (não é válido para TCC).
 %
 % Para deixar uma página em branco no lugar da ficha 
 % catalográfica, descomente uma das três linhas a seguir:
@@ -112,24 +128,29 @@
 % Este comando deve ficar aqui:
 \paginasiniciais
 
-% Se houver dedicatória, descomente a linha a seguir e 
-% escreva a dedicatória em seguida.
-% \prefacesection{Dedicatória}
-% A dedicatória deve ocupar uma única página.
-%
-
-% Se houver epígrafe, descomente e edite as linhas a seguir:
-% \begin{epigrafe}
+ % Se houver uma dedicatória, informe no comando a seguir. 
+ % A dedicatória deve ter poucas linhas.
+ %\dedicatoria{A dedicatória deve ocupar poucas linhas.}
+ 
+% Se houver epígrafe, use o comando \epigrafe a seguir
+%   - O primeiro parâmetro é o autor dos dizeres.
+%   - O segundo parâmetro são os dizeres.
+% \epigrafe{Hippocrates}{
 % {\it
 % Vita brevis,\\
 % ars longa,\\
 % occasio praeceps,\\
 % experimentum periculosum,\\
 % iudicium difficile.}
-%
-% \hfill (Hippocrates)
-% \end{epigrafe}
+% }
 
+% O comando condicional \ifturnitin a seguir é importante para 
+% preparar o texto para encaminhamento ao Turnitin. 
+% NÃO REMOVA!!
+% O \fi correspondente está após o comando \tableofcontents
+\ifturnitin
+   \relax 
+\else
 % Adicione no arquivo "agradecimentos.tex" os seus agradecimentos
 % Caso prefira omitir os agradecimentos, comente a linha a seguir.
 \input{agradecimentos}
@@ -171,6 +192,11 @@ The abstract must have at most 500 words and must fit in a single page.
 % O sumário vem aqui:
 \tableofcontents
 
+%% O comando \fi a seguir é obrigatório para o controle 
+%% da opção "turnitin". Não o remova!!
+\fi
+
+
 % E a linha a seguir deve ficar bem aqui. Não mude.
 \fimdaspaginasiniciais
 
@@ -196,6 +222,13 @@ The abstract must have at most 500 words and must fit in a single page.
 % Detalhe: não precisa incluir a extensão .tex
 \include{conclusoes}
 
+% O comando condicional \ifturnitin a seguir é importante para 
+% preparar o texto para encaminhamento ao Turnitin. 
+% NÃO REMOVA!!
+% O \fi correspondente está antes do \end{document}
+\ifturnitin
+    \relax
+\else 
 % Comandos para incluir as referências bibliográficas
 % Define espaçamento simples em cada referência
 \begin{singlespacing}
@@ -220,4 +253,7 @@ The abstract must have at most 500 words and must fit in a single page.
 % Detalhe: não precisa incluir a extensão .tex
 \include{apendices}
 %
+%% O comando \fi a seguir é obrigatório para o controle 
+%% da opção "turnitin". Não o remova!!
+\fi
 \end{document}
