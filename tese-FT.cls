@@ -143,7 +143,7 @@
 %%%%
 \gdef\bsi{
 %added
-  \gdef\@textoaviso{\relax}
+  \gdef\@textoaviso{\relax \cathpage}
   \if\@autora\relax
   \gdef\@degnamept{Bacharel em Sistemas de Informação}
   \gdef\@degnamees{Licenciatura en Sistemas de Información}
@@ -486,12 +486,12 @@
 \def\cathpage{
   \ifx\@fichacatalografica\relax
   Na versão final, esta página será substituída pela
-  ficha catalográfica na dissertação de mestrado ou na
-  tese de doutorado.
+  ficha catalográfica na dissertação de mestrado,
+  tese de doutorado, ou no TCC.
   
   \phantom{linha em branco}
   
-  No caso de TCC, deixe essa página em branco conforme as instruções a seguir.
+  No caso de TCC em tads, deixe essa página em branco conforme as instruções a seguir.
   
   \phantom{linha em branco}
   
