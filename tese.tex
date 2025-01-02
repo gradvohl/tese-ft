@@ -18,16 +18,19 @@
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 24/fevereiro/2023.
+% Última versão: 2/janeiro/2025.
 %
 % Adições/Alterações nesta última versão:
-%% - Adição da opção Turnitin para gerar a tese sem os elementos 
-%%   pré e pós textuais. (Veja exemplo na linha 53 deste arquivo).
-%% - Adição das propriedades na versão em PDF.
-%% - Adição da variável \@nivelEnsino para ajustar o texto sobre a 
-%%   ata de defesa.
-%% - Melhorias nos comandos para epígrafe e dedicatória (linhas 141
-%%   a 145 deste arquivo)
+%% - Adição do pacote cleveref para melhor formatação das referências, inclusive nas três línguas.
+%% - Ajuste para Monografia ao invés de Dissertação para BSI e TADS.
+%% - Ajuste para nova normativa ABNT NBR 10520:2023 referente ao modo de citação de autores, 
+%%   que passa de "(AUTOR, 0000)" para "(Autor, 0000). Ver linha 125 e 126.
+%% - Adição das seguintes variáveis para facilitar a adaptação para outros cursos ou unidades de ensino: 
+%%   \@UNICAMP para definir a abreviatura da universidade (nesse caso, UNICAMP)
+%%   \@UNIDADEENSINO para definir a unidade de ensino (nesse caso, Faculdade de Tecnologia)
+%%   \@UNIDADEENSINOABREV para definir a abreviatura da unidade de ensino (nesse caso, FT)
+%%   \@CIDADE para definir a cidade onde ocorreu o trabalho foi realizado. 
+%%  - Adição das áreas de concentração em outros idiomas (inglês e espanhol).
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -99,7 +102,7 @@
 % Defina a data da defesa no formato {Dia}{Mês}{Ano}
 % Use apenas números! O template transformará em palavras,
 % se necessário.
-\datadadefesa{18}{2}{2023}
+\datadadefesa{18}{2}{2025}
 
 % Para a versão final defina:
 % Repita o nome do Orientador(a) no primeiro avaliador
@@ -116,7 +119,9 @@
 % copie o arquivo PDF para o projeto no Overleaf, descomente 
 % e informe o nome do arquivo no comando a seguir.
 %\fichacatalografica{SeuArquivo.pdf}
-% OBSERVAÇÂO: O comando para a ficha catalográfica Não é válido para tads
+% OBSERVAÇÂO: O comando para a ficha catalográfica só é válido 
+% versoes finais de TCC, teses e dissertações (não é válido para qualificação 
+% ou TCCs que não serão disponibilizados na biblioteca).
 %
 % Para deixar uma página em branco no lugar da ficha 
 % catalográfica, descomente uma das três linhas a seguir:
@@ -127,8 +132,8 @@
 % Este comando deve ficar aqui:
 \paginasiniciais
 
- % Se houver uma dedicatória, informe no comando a seguir. 
- % A dedicatória deve ter poucas linhas.
+% Se houver uma dedicatória, informe no comando a seguir. 
+% A dedicatória deve ter poucas linhas.
  %\dedicatoria{A dedicatória deve ocupar poucas linhas.}
  
 % Se houver epígrafe, use o comando \epigrafe a seguir
@@ -194,7 +199,6 @@ The abstract must have at most 500 words and must fit in a single page.
 %% O comando \fi a seguir é obrigatório para o controle 
 %% da opção "turnitin". Não o remova!!
 \fi
-
 
 % E a linha a seguir deve ficar bem aqui. Não mude.
 \fimdaspaginasiniciais

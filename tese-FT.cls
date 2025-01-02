@@ -17,25 +17,29 @@
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 24/fevereiro/2023.
+% Última versão: 2/janeiro/2025.
 %
 % Adições/Alterações nesta última versão:
-%% - Adição da opção Turnitin para gerar a tese sem os elementos 
-%%   pré e pós textuais.
-%% - Adição das propriedades na versão em PDF.
-%% - Adição da variável \@nivelEnsino para ajustar o texto sobre a 
-%%   ata de defesa.
-%% - Melhorias nos comandos para epígrafe e dedicatória
+%% - Adição do pacote cleveref para melhor formatação das referências, inclusive nas três línguas.
+%% - Ajuste para Monografia ao invés de Dissertação para BSI e TADS.
+%% - Ajuste para nova normativa ABNT NBR 10520:2023 referente ao modo de citação de autores, 
+%%   que passa de "(AUTOR, 0000)" para "(Autor, 0000). Ver linha 125 e 126.
+%% - Adição das seguintes variáveis para facilitar a adaptação para outros cursos ou unidades de ensino: 
+%%   \@UNICAMP para definir a abreviatura da universidade (nesse caso, UNICAMP)
+%%   \@UNIDADEENSINO para definir a unidade de ensino (nesse caso, Faculdade de Tecnologia)
+%%   \@UNIDADEENSINOABREV para definir a abreviatura da unidade de ensino (nesse caso, FT)
+%%   \@CIDADE para definir a cidade onde ocorreu o trabalho foi realizado. 
+%%  - Adição das áreas de concentração em outros idiomas (inglês e espanhol).
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{tese-FT}[]
-\typeout{tese-FT}
+\typeout{tese-FT. Modelo desenvolvido por Prof. André Leon S. Gradvohl, Dr.}
 
 \def\thesislanguage#1{\gdef\@thesislanguage{#1}}
 \DeclareOption{Ingles}{
   \thesislanguage{0}
-  \typeout{tese-FT: ingles.}
+  \typeout{tese-FT: english.}
 }
 \DeclareOption{Espanhol}{
   \thesislanguage{1}
@@ -84,10 +88,14 @@
   \fi
 \fi
 %
-%Pacotes padrão para as línguas usadas no texto.
+% Pacote para substituicao de strings
+\RequirePackage{xstring}
+%
+% Pacotes padrão para as línguas usadas no texto.
 \RequirePackage[english,spanish,portuguese,brazil]{babel}
+% Pacote para os cabeçalhos
 \RequirePackage{fancyhdr}
-%Pacotes para determinar o tipo de fonte usada para imprimir o texto
+% Pacotes para determinar o tipo de fonte usada para imprimir o texto
 \RequirePackage[ttscale=.875]{libertine}
 \RequirePackage{libertinust1math}
 \RequirePackage[T1]{fontenc}
@@ -110,18 +118,34 @@
 \RequirePackage{geometry}
 \geometry{a4paper,top=30mm,bottom=20mm,left=30mm,right=20mm}
 \RequirePackage{csquotes}
-%Pacotes para adicionar a bibliografia
+% Pacotes para adicionar a bibliografia
 % Coloque a opção uniquename=false, se não quiser que o Biblatex faça a desambiguação de nomes.
 \RequirePackage[style=abnt,uniquename=init,giveninits,uniquelist=true,maxbibnames=4,repeatfields=true,justify]{biblatex}
-%Pacote para tabelas mais interessantes
+% Comandos para ajustar as citacoes para nova normativa ABNT NBR 10520:2023
+\renewcommand*{\UpperOrSC}[1]{#1}
+\renewcommand*{\UpperOrSCCite}[1]{#1}
+%
+% Pacote para tabelas mais interessantes
 \RequirePackage{booktabs}
 \renewcommand{\arraystretch}{1.2}
-%Teste com pacote listofitems
-\RequirePackage{listofitems}
+
 \RequirePackage{ifthen}
+
+\ifcase\@thesislanguage\relax
+  %English
+  \RequirePackage[english,nameinlink]{cleveref}
+  \or%Español
+  \RequirePackage[spanish,nameinlink]{cleveref}
+  \or%Português 
+  \RequirePackage[brazilian,nameinlink,noabbrev]{cleveref}
+\fi
+  \Crefformat{equation}{#2\Cref@equation@name~#1#3}
+  \creflabelformat{equation}{#2\textup{#1}#3}
 %
 % Definição de novos comandos
-\newcommand{\@FT}{Faculdade de Tecnologia}
+\newcommand{\@CIDADE}{Limeira}
+\newcommand{\@UNIDADEENSINO}{Faculdade de Tecnologia}
+\newcommand{\@UNIDADEENSINOABREV}{FT}
 \newcommand{\@UNICAMP}{Universidade Estadual de Campinas}
 %
 % Criação de variáveis para o texto.
@@ -143,7 +167,7 @@
 %%%%
 \gdef\bsi{
 %added
-  \gdef\@textoaviso{\relax \cathpage}
+  \gdef\@textoaviso{\relax\cathpage}
   \if\@autora\relax
   \gdef\@degnamept{Bacharel em Sistemas de Informação}
   \gdef\@degnamees{Licenciatura en Sistemas de Información}
@@ -154,8 +178,8 @@
   \gdef\@artigo{a}
   \fi
   \gdef\@degnameen{Bachelor in Information Sciences}
-  \gdef\@monopt{Dissertação}
-  \gdef\@monoes{Dissertacíon}
+  \gdef\@monopt{Monografia}
+  \gdef\@monoes{Monografía}
   \gdef\@monoen{Monograph}
   
   \gdef\@nivelEnsino{Graduação}
@@ -174,8 +198,8 @@
   \gdef\@artigo{a}
   \fi
   \gdef\@degnameen{Technologist in Systems Analysis and Development}
-  \gdef\@monopt{Dissertação}
-  \gdef\@monoes{Dissertacíon}
+  \gdef\@monopt{Monografia}
+  \gdef\@monoes{Monografía}
   \gdef\@monoen{Monograph}
   
   \gdef\@nivelEnsino{Graduação}
@@ -310,7 +334,6 @@
 \let\@areaConcentracao\relax
 \def\areaConcentracao#1{\gdef\@areaConcentracao{#1}}
 
-
 \def\paginasiniciais{
   \newlength{\oldparindent}
   \setlength{\oldparindent}{\parindent}
@@ -369,10 +392,9 @@
          \noindent
          \centering{
            \large \MakeUppercase{\@UNICAMP}\\
-                   \@FT}
+                   \@UNIDADEENSINO}
        }
-           
-       }
+    }
 }
 
 \def\openningpage{
@@ -392,7 +414,7 @@
     {\bf \@titulo}
     \vfill
     \large
-    Limeira\\\@ano
+    \@CIDADE\\\@ano
   \end{center}
 }
 
@@ -426,8 +448,13 @@
       \@monoen\xspace presented to the School of Technology of the
       University of Campinas in partial fulfillment of the requirements for
       the degree of \@degnameen\xspace in Computer
-      Science\ifx\@areaConcentracao\relax\else, in the area of  \@areaConcentracao\fi\ifx\@cotutela\relax\else\xspace under the double-diploma
-      agreement between Unicamp and \@cotutela\fi.
+      Science\ifx\@areaConcentracao\relax\else, in the area of 
+      \IfStrEqCase{\@areaConcentracao}{{Sistemas de Informação e Comunicação}{Computing and Communication Systems}%
+                                       {Ambiente}{Environment}%
+                                       {Ciência dos Materiais}{Materials Science}%
+                                      }%
+      \fi\ifx\@cotutela\relax\else\xspace 
+      under the double-diploma agreement between Unicamp and \@cotutela\fi.
     \end{minipage}
   \or
     \vskip 8mm
@@ -435,9 +462,13 @@
       \supresshyphen
       \@monoes\xspace presentada a Faculdad de Tecnologia de la
       Universidad de Campinas para obtener el título de
-      \@degnamees\xspace en Tecnologia\ifx\@areaConcentracao\relax\else, en la area de  \@areaConcentracao\fi\ifx\@cotutela\relax\else\xspace en el ámbito del
-      acuerdo de Cotutela firmando entre la Universidad Estatal de Campinas
-      y la \@cotutela\fi.
+      \@degnamees\xspace en Tecnologia\ifx\@areaConcentracao\relax\else, en la area de  %\@areaConcentracao
+      \IfStrEqCase{\@areaConcentracao}{{Sistemas de Informação e Comunicação}{Sistemas de Computación y Comunicación}%
+                                       {Ambiente}{Ambiente}%
+                                       {Ciência dos Materiais}{Ciencias de los Materiales}%
+                                      }%
+      \fi\ifx\@cotutela\relax\else\xspace 
+      en el ámbito del acuerdo de Cotutela firmando entre la Universidad Estatal de Campinas y la \@cotutela\fi.
     \end{minipage}
   \fi
   \vfill
@@ -478,20 +509,19 @@
   \vfill
   \begin{center}
     \large
-    Limeira\\ \@ano
+    \@CIDADE\\ \@ano
   \end{center}
 }
-
 
 \def\cathpage{
   \ifx\@fichacatalografica\relax
   Na versão final, esta página será substituída pela
-  ficha catalográfica na dissertação de mestrado,
-  tese de doutorado, ou no TCC.
+  ficha catalográfica no TCC, na dissertação de mestrado ou na
+  tese de doutorado.
   
   \phantom{linha em branco}
   
-  No caso de TCC em tads, deixe essa página em branco conforme as instruções a seguir.
+  Caso não tenha ficha catalográfica, deixe essa página em branco conforme as instruções a seguir.
   
   \phantom{linha em branco}
   
@@ -505,27 +535,19 @@
   
   \phantom{linha em branco}
   
-  
-  De acordo com o padrão da CCPG: ``Quando se tratar de Teses e
-  Dissertações financiadas por agências de fomento, os beneficiados
-  deverão fazer referência ao apoio recebido e inserir esta
-  informação na ficha catalográfica, além do nome da agência, o
-  número do processo pelo qual recebeu o auxílio.''\\e\\``caso a
-  tese de doutorado seja feita em Cotutela, será necessário informar na
-  ficha catalográfica o fato, a Universidade convenente, o país e o
-  nome do orientador.''
+  De acordo com o padrão da CCPG: ``Quando se tratar de Teses e Dissertações financiadas por agências de fomento, os beneficiados   deverão fazer referência ao apoio recebido e inserir esta informação na ficha catalográfica, além do nome da agência, o número do processo pelo qual recebeu o auxílio.''\\e\\``caso a tese de doutorado seja feita em Cotutela, será necessário informar na ficha catalográfica o fato, a Universidade convenente, o país e o nome do orientador.''
   \else
-  \includepdf[pagecommand={}]{\@fichacatalografica}
+    \includepdf[pagecommand={}]{\@fichacatalografica}
   \fi
 }
-
 
 \def\approvalpage{
   \iffinalversion
     \noindent\centerline{\large\MakeUppercase{\textbf{Folha de Aprovação}}}
     \vskip 20mm
     
-    Abaixo se apresentam os membros da comissão julgadora da sessão pública de defesa de dissertação para o Título de \@degnamept\xspace na área de concentração \@areaConcentracao, a que se submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@autora\fi, em \@dia\xspace de \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de \@ano\xspace na Faculdade de Tecnologia -- FT/UNICAMP, em Limeira/SP.
+    Abaixo se apresentam os membros da comissão julgadora da sessão pública de defesa de dissertação para o Título de \@degnamept\xspace na área de concentração \@areaConcentracao, a que se submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@autora\fi, em \@dia\xspace de \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de \@ano\xspace na %Faculdade de Tecnologia -- FT/UNICAMP
+    \@UNIDADEENSINO{} -- \@UNIDADEENSINOABREV/UNICAMP, em \@CIDADE/SP.
 
     \vfill
 
@@ -548,15 +570,12 @@
     \vfill
       \supresshyphen
       \noindent
-       Ata da defesa, assinada pelos membros da Comissão Examinadora, encontra-se no SIGA/Sistema de Fluxo de Dissertação/Tese e na Secretaria de \@nivelEnsino\xspace da Faculdade de Tecnologia.
+       Ata da defesa, assinada pelos membros da Comissão Examinadora, encontra-se no SIGA/Sistema de Fluxo de Dissertação/Tese e na Secretaria de \@nivelEnsino\xspace da \@UNIDADEENSINO.
     \vfill
   \else
-    Na versão final, esta página será substituída por outra
-    informando a composição da banca e que a ata de defesa está arquivada
-    pela Unicamp.
+    Na versão final, esta página será substituída por outra informando a composição da banca e que a ata de defesa está arquivada pela \@UNICAMP.
   \fi
 }
-
 
 \def\prefacesection#1{
   \chapter*{#1}
@@ -564,7 +583,6 @@
   \pagestyle{empty}
   \thispagestyle{empty}
 }
-
 
 \gdef\resetlang{
   \ifcase\@thesislanguage\relax
@@ -593,6 +611,7 @@
 \newcommand{\fimdaspaginasiniciais}{
 \newpage
 \makeatletter
+% Adição importante para o cleveref
 \let\ps@plain\ps@mystyle
 \makeatother
 
@@ -649,39 +668,21 @@
    \fi
 }
 
-
 %controle de linhas órfãs e viúvas.
 \widowpenalty10000
 \clubpenalty10000
 
-%Filtragem dos parâmetros para múltiplas referências.
-\newcounter{cnt}
-\newcommand{\procitems}[1] {%
-  \setcounter{cnt}{1}%
-  \setsepchar{,}%
-  \readlist*\argumentos{#1}%
-  \ifthenelse{\argumentoslen>1}{%
-      \whiledo{\argumentoslen>\the\numexpr\value{cnt}+1\relax}{%
-         \ref{\argumentos[\value{cnt}]},\xspace
-         \stepcounter{cnt}%
-     }%
-     \ref{\argumentos[-2]} e \ref{\argumentos[-1]}%
-    }{% else
-       \ref{\argumentos[1]}%
-    }%
-}%
-%
 %Comandos específicos para referenciar Figuras, Tabelas, Seções etc.
-\newcommand{\Capitulo}[1] {Capítulo~\ref{#1}}
-\newcommand{\capitulos}[1]{capítulos \procitems{#1}}
-\newcommand{\Secao}[1] {Seção~\ref{#1}}
-\newcommand{\secoes}[1]{seções \procitems{#1}}
-\newcommand{\Figura}[1]{Figura~\ref{#1}}
-\newcommand{\figuras}[1]{figuras \procitems{#1}}
-\newcommand{\Tabela}[1] {Tabela~\ref{#1}}
-\newcommand{\tabelas}[1]{tabelas \procitems{#1}}
-\newcommand{\Equacao}[1] {Equação~\ref{#1}}
-\newcommand{\equacoes}[1]{equações \procitems{#1}}
+\newcommand{\Capitulo}[1] {\Cref{#1}}
+\newcommand{\capitulos}[1]{\cref{#1}}
+\newcommand{\Secao}[1]    {\Cref{#1}}
+\newcommand{\secoes}[1]   {\cref{#1}}
+\newcommand{\Figura}[1]   {\Cref{#1}}
+\newcommand{\figuras}[1]  {\cref{#1}}
+\newcommand{\Tabela}[1]   {\Cref{#1}}
+\newcommand{\tabelas}[1]  {\cref{#1}}
+\newcommand{\Equacao}[1]  {\Cref{#1}}
+\newcommand{\equacoes}[1] {\cref{#1}}
 
 %Comandos para abreviações especiais
 \newcommand{\ie}{i.\,e.\xspace}

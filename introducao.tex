@@ -6,7 +6,7 @@
 
 Esse é um texto de exemplo para o modelo de teses e dissertações da Faculdade de Tecnologia (FT) da UNICAMP. Esse modelo se aplica às teses de doutorado, dissertações de mestrado e Trabalhos de Conclusão de Curso, para a graduação (dos cursos de informática da FT).
 
-A seguir, estão alguns exemplos para os elementos mais comuns em textos acadêmicos, \ie tabelas, equações e figuras.
+A seguir, estão alguns exemplos para os elementos mais comuns em textos acadêmicos, \ie tabelas, equações e figuras. 
 
 \section{Exemplos de Tabelas e Equações}\label{sec:exemplostabelas}
 Aqui um exemplo de como referenciar a \Tabela{tab:tabela_1}. Note que é preciso definir um rótulo (\textit{label}) dentro do comando de definição da tabela.
@@ -37,6 +37,7 @@ x=\frac{\sqrt{a^{2}+b^{2}}}{\sigma}
 \label{eq:teste}
 \end{equation}
 
+
 Você também pode obter ajudar para escrever as equações em \LaTeX no site \url{http://www.codecogs.com/latex/eqneditor.php}.
 
 % Note que podemos incluir automaticamente alguns termos na lista de abreviaturas e siglas no pré-texto. Veja exemplos a seguir no código fonte. 
@@ -56,31 +57,32 @@ Veja a seguir o comando para criar uma figura e o resultado, na \Figura{fig:xwin
 
 \begin{figure}[!htb]
 \centering
-%As figuras estão na pasta figuras.
-% Se seu texto estiver demorando muito para compilar, 
-% use figuras no formato PDF ou PNG.
-\includegraphics[scale=0.2]{starwars21280.jpg}
+% As figuras estão na pasta figuras.
+% Se seu texto estiver demorando muito para compilar, use figuras no formato PDF ou PNG.
+% Observe, no comando includegraphics que você pode estabelecer uma proporção para a figura.
+% Nesse caso, a figura tem uma proporção equivalente à metade (0.5) da largura do texto (\textwidth)
+\includegraphics[width=0.5\textwidth]{starwars21280.jpg}
 \caption[Legenda curta de figura]{Legenda mais extensa de figura.}
 \label{fig:xwing}
 \end{figure}
 
-Dica importante: sempre que possível, use figuras no formato PDF. De acordo com o Overleaf, isso acelera a compilação do texto, sem perder a qualidade da figura.
+Dica importante: sempre que possível, use figuras no formato PDF. De acordo com o Overleaf, isso acelera a compilação do texto, sem perder a qualidade da figura. 
 
-\subsection{Exemplo de subseção}
+\subsection{Exemplo de subseção}\label{subsec:exemploSubsec}
 É importante evitar chegar a esse nível de subseção. Dois níveis são suficientes. Use essa opção em último caso, apenas.
 
 
 \subsection{Exemplo de adição de siglas}\label{subsec:siglas}
-Para adicionar uma sigla ou abreviatura na lista de siglas e abreviaturas, use o comando ``\texttt{\textbackslash{}Sigla\{nome por extenso\}\{abreviatura\}}'' ou ``\texttt{\textbackslash{}SiglaHifen\{nome por extenso\}\{abreviatura\}}'' para adicionar a sigla com hífen. 
+Para adicionar uma sigla ou abreviatura na lista de siglas e abreviaturas, use o comando ``\texttt{\textbackslash{}Sigla\{nome por extenso\}\{abreviatura\}}'' ou ``\texttt{\textbackslash{}SiglaHifen\{nome por} \texttt{ex\-ten\-so\}\{abreviatura\}}'' para adicionar a sigla com hífen. 
 Por exemplo, respectivamente, \Sigla{Ácido Desoxirribonucleico}{DNA} ou \SiglaHifen{Ácido Ribonucleico}{RNA}. A lista de siglas é adicionada automaticamente.
 
-\section{Comandos opcionais para facilitar}
+\section{Comandos opcionais para facilitar}\label{sec:comandosOpc}
 Este modelo também criou alguns comandos adicionais não apenas para facilitar o trabalho de quem escreve, mas também para manter uma formatação mais consistente.
 
 Entre esses comandos estão o \texttt{\textbackslash{}ie} que inclui a abreviatura ``\ie'' no texto (equivalente ao ``isto é''). Usar esse comando vai garantir que a abreviatura não se separe entre linhas e que o espaço entre o `.' e a próxima letra seja fixo. O mesmo vale para os comandos \texttt{\textbackslash{}eg} que inclui a abreviatura ``\eg'' e \texttt{\textbackslash{}pex} que inclui a abreviatura ``\pex''.
 
-Também existem os comandos \texttt{\textbackslash{}Capitulo\{rótulo do capítulo\}}, \texttt{\textbackslash{}Equacao\{rótulo da equação\}}, \texttt{\textbackslash{}Figura\{rótulo do figura\}}, \texttt{\textbackslash{}Secao\{rótulo da seção\}} e \texttt{\textbackslash{}Tabela\{rótulo da tabela\}}. Esses comandos inserem referências para os respectivos elementos. Além disso, no próprio texto aparece a \textit{string} (``Capítulo'', ``Equação'', ``Figura'' etc) seguida da referência já com o link. Por exemplo, \Secao{sec:exemplo_secao}. Sugere-se a utilização desses comandos para referenciar os respectivos elementos ao invés do comando \texttt{\textbackslash{}ref\{rótulo\}}. Assim, o texto ficará mais uniforme. 
+Também existem os comandos \texttt{\textbackslash{}Capitulo\{rótulo do capítulo\}}, \texttt{\textbackslash{}Equacao\{ró\-tu\-lo da equação\}}, \texttt{\textbackslash{}Figura\{rótulo da figura\}}, \texttt{\textbackslash{}Secao\{rótulo da seção\}} e \texttt{\textbackslash{}Tabela\{rótulo da tabela\}}. Esses comandos inserem referências para os respectivos elementos. Além disso, no próprio texto aparece a \textit{string} (``Capítulo'', ``Equação'', ``Figura'' etc) seguida da referência já com o link. Por exemplo, \Secao{sec:exemplo_secao}. Sugere-se a utilização desses comandos para referenciar os respectivos elementos ao invés do comando \texttt{\textbackslash{}ref\{rótulo\}}. Assim, o texto ficará mais uniforme. 
 
-É possível também usar esses comandos nas versões no plurall para conjuntos de referências. Por exemplo, para referenciar várias seções, você pode utilizar o comando \texttt{\textbackslash{}secoes\{rótulo\_1, rótulo\_2, rótulo\_3\}}.
+É possível também usar esses comandos nas versões no plural para conjuntos de referências. Por exemplo, para referenciar várias seções, você pode utilizar o comando \texttt{\textbackslash{}secoes\{ró\-tu\-lo\_1, rótulo\_2, rótulo\_3\}}.
 
 Por exemplo, suponha que queiramos referenciar as \secoes{sec:exemplostabelas,sec:exemplo_secao,subsec:siglas}.
