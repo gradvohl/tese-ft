@@ -15,10 +15,10 @@ Changes are recorded from since version 4.1.0
 ### Added
   - Addition of the cleveref package for better formatting of references, in the three languages (Portuguese, English, and Spanish).
   - Addition of the following variables to facilitate adaptation to other courses or teaching units:
-        -- \@UNICAMP to define the abbreviation of the university (in this case, UNICAMP)
-        -- \@UNIDADEENSINO to define the teaching unit (in this case, Faculdade de Tecnologia)
-        -- \@UNIDADEENSINOABREV to define the abbreviation of the academic unit (in this case, FT)
-        -- \@CIDADE to define the city where the work was carried out.       
+    - \@UNICAMP to define the abbreviation of the university (in this case, UNICAMP)
+    - \@UNIDADEENSINO to define the teaching unit (in this case, Faculdade de Tecnologia)
+    - \@UNIDADEENSINOABREV to define the abbreviation of the academic unit (in this case, FT)
+    - \@CIDADE to define the city where the work was carried out.       
   - Addition of areas of concentration in other languages (English and Spanish).
 
 
