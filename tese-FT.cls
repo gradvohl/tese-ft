@@ -17,19 +17,14 @@
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 2/janeiro/2025.
+% Última versão: 7/junho/2025.
 %
 % Adições/Alterações nesta última versão:
-%% - Adição do pacote cleveref para melhor formatação das referências, inclusive nas três línguas.
-%% - Ajuste para Monografia ao invés de Dissertação para BSI e TADS.
-%% - Ajuste para nova normativa ABNT NBR 10520:2023 referente ao modo de citação de autores, 
-%%   que passa de "(AUTOR, 0000)" para "(Autor, 0000). Ver linha 125 e 126.
-%% - Adição das seguintes variáveis para facilitar a adaptação para outros cursos ou unidades de ensino: 
-%%   \@UNICAMP para definir a abreviatura da universidade (nesse caso, UNICAMP)
-%%   \@UNIDADEENSINO para definir a unidade de ensino (nesse caso, Faculdade de Tecnologia)
-%%   \@UNIDADEENSINOABREV para definir a abreviatura da unidade de ensino (nesse caso, FT)
-%%   \@CIDADE para definir a cidade onde ocorreu o trabalho foi realizado. 
-%%  - Adição das áreas de concentração em outros idiomas (inglês e espanhol).
+% - Ajustes na folha de aprovação.
+%   - Remoção da área de concentração quando for curso de 
+%     graduação na folha de aprovação.
+%   - Adaptação do texto na folha de aprovação quando se 
+%     referir a graduação, mestrado ou a doutorado.
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
@@ -181,7 +176,7 @@
   \gdef\@monopt{Monografia}
   \gdef\@monoes{Monografía}
   \gdef\@monoen{Monograph}
-  
+
   \gdef\@nivelEnsino{Graduação}
 }
 
@@ -439,7 +434,7 @@
   \normalsize
   \hfill\begin{minipage}[t]{0.54\textwidth}
     \supresshyphen
-    \@monopt\xspace apresentada à Faculdade de Tecnologia da Universidade Estadual de Campinas como parte dos requisitos para a obtenção do título de \@degnamept\xspace \ifx\@areaConcentracao\relax\else, na área de  \@areaConcentracao\fi\ifx\@cotutela\relax\else\xspace, no âmbito do acordo de Cotutela firmado entre a Unicamp e a \@cotutela\fi.
+    \@monopt\xspace apresentada à Faculdade de Tecnologia da Universidade Estadual de Campinas como parte dos requisitos para a obtenção do título de \@degnamept\xspace \ifx\@areaConcentracao\relax\else, na área de  \@areaConcentracao\fi \ifx\@cotutela\relax\else\xspace, no âmbito do acordo de Cotutela firmado entre a Unicamp e a \@cotutela\fi.
   \end{minipage}
   \ifcase\@thesislanguage
     \vskip 8mm
@@ -515,6 +510,7 @@
 
 \def\cathpage{
   \ifx\@fichacatalografica\relax
+  \newpage
   Na versão final, esta página será substituída pela
   ficha catalográfica no TCC, na dissertação de mestrado ou na
   tese de doutorado.
@@ -546,7 +542,11 @@
     \noindent\centerline{\large\MakeUppercase{\textbf{Folha de Aprovação}}}
     \vskip 20mm
     
-    Abaixo se apresentam os membros da comissão julgadora da sessão pública de defesa de dissertação para o Título de \@degnamept\xspace na área de concentração \@areaConcentracao, a que se submeteu \@artigo\xspace alun\@artigo\xspace \if\@autora\relax\@autor\else\@autora\fi, em \@dia\xspace de \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de \@ano\xspace na %Faculdade de Tecnologia -- FT/UNICAMP
+    Abaixo se apresentam os membros da comissão julgadora da % <-- Deixe esse espaço antes do %
+    \IfStrEq{\@nivelEnsino}{Pós-graduação}{sessão pública de defesa de \xspace}{}%
+    \MakeLowercase{\@monopt} para o título de \@degnamept\xspace 
+    \IfStrEq{\@nivelEnsino}{Pós-graduação}{na área de concentração \@areaConcentracao,}
+    a que se submeteu \@artigo\xspace candidat\@artigo\xspace \if\@autora\relax\@autor\else\@autora\fi, em \@dia\xspace de \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de \@ano\xspace na %Faculdade de Tecnologia -- FT/UNICAMP
     \@UNIDADEENSINO{} -- \@UNIDADEENSINOABREV/UNICAMP, em \@CIDADE/SP.
 
     \vfill
