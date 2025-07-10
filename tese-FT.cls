@@ -17,14 +17,11 @@
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 7/junho/2025.
+% Última versão: 10/julho/2025.
 %
 % Adições/Alterações nesta última versão:
 % - Ajustes na folha de aprovação.
-%   - Remoção da área de concentração quando for curso de 
-%     graduação na folha de aprovação.
-%   - Adaptação do texto na folha de aprovação quando se 
-%     referir a graduação, mestrado ou a doutorado.
+%   - Simplificações na folha de aprovação por solicitação da Pró-reitoria de Pós-graduação
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
@@ -539,17 +536,19 @@
 
 \def\approvalpage{
   \iffinalversion
-    \noindent\centerline{\large\MakeUppercase{\textbf{Folha de Aprovação}}}
-    \vskip 20mm
+    %\noindent\centerline{\large\MakeUppercase{\textbf{Folha de Aprovação}}}
+    %\vskip 20mm
+    \vspace*{5cm}
     
-    Abaixo se apresentam os membros da comissão julgadora da % <-- Deixe esse espaço antes do %
-    \IfStrEq{\@nivelEnsino}{Pós-graduação}{sessão pública de defesa de \xspace}{}%
-    \MakeLowercase{\@monopt} para o título de \@degnamept\xspace 
-    \IfStrEq{\@nivelEnsino}{Pós-graduação}{na área de concentração \@areaConcentracao,}
-    a que se submeteu \@artigo\xspace candidat\@artigo\xspace \if\@autora\relax\@autor\else\@autora\fi, em \@dia\xspace de \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de \@ano\xspace na %Faculdade de Tecnologia -- FT/UNICAMP
-    \@UNIDADEENSINO{} -- \@UNIDADEENSINOABREV/UNICAMP, em \@CIDADE/SP.
+    
+    % Abaixo se apresentam os membros da comissão julgadora da % <-- Deixe esse espaço antes do %
+    % \IfStrEq{\@nivelEnsino}{Pós-graduação}{sessão pública de defesa de \xspace}{}%
+    % \MakeLowercase{\@monopt} para o título de \@degnamept\xspace 
+    % \IfStrEq{\@nivelEnsino}{Pós-graduação}{na área de concentração \@areaConcentracao,}
+    % a que se submeteu \@artigo\xspace candidat\@artigo\xspace \if\@autora\relax\@autor\else\@autora\fi, em \@dia\xspace de \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de \@ano\xspace na %Faculdade de Tecnologia -- FT/UNICAMP
+    % \@UNIDADEENSINO{} -- \@UNIDADEENSINOABREV/UNICAMP, em \@CIDADE/SP.
 
-    \vfill
+    %\vfill
 
     \ifx\@avalA\relax
     \else
@@ -566,8 +565,10 @@
        
        \ifx\@avalF\relax\else \noindent \textbf{\@avalF}\newline\@instavalF\fi
     \fi
+
+    \vspace*{\fill}
+    %\vfill
     
-    \vfill
       \supresshyphen
       \noindent
        Ata da defesa, assinada pelos membros da Comissão Examinadora, encontra-se no SIGA/Sistema de Fluxo de Dissertação/Tese e na Secretaria de \@nivelEnsino\xspace da \@UNIDADEENSINO.
