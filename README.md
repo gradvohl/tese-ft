@@ -9,7 +9,7 @@ A utilização desse modelo é livre e está de acordo com a última versão das
 
 Você também poderá utilizar esse modelo diretamente no [Overleaf](https://www.overleaf.com), um site que permite a edição de textos no LaTeX de forma bem prática.
 
-O modelo no site Overleaf está disponível em neste [link](https://pt.overleaf.com/latex/templates/template-para-teses-e-dissertacoes-na-ft-slash-unicamp/rhznqbkjvpcr) ou procure por **Template para teses e dissertações na FT/UNICAMP**. Verifique se está na última versão (7/Junho/2025).
+O modelo no site Overleaf está disponível em neste [link](https://pt.overleaf.com/latex/templates/template-para-teses-e-dissertacoes-na-ft-slash-unicamp/rhznqbkjvpcr) ou procure por **Template para teses e dissertações na FT/UNICAMP**. Verifique se está na última versão (10/Julho/2025).
 
 ## Arquivos que você vai utilizar
 :no_entry_sign: Você **não** deve mexer no arquivo ``tese-FT.cls``. Nele estão os comandos para a devida formatação do texto.
@@ -55,7 +55,7 @@ Lattes CV:    http://lattes.cnpq.br/9343261628675642
 
 ORCID: [0000-0002-6520-9740](https://orcid.org/0000-0002-6520-9740)
 
-Última versão: 7/Junho/2025
+Última versão: 10/Julho/2025
 
 Esse software está em um repositório indexado pelo Zenodo e pode ser acessado com o DOI a seguir 
 
