@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Changes are recorded from since version 4.1.0
 
+## [4.2.1] - 2025-07-10
+
+### Updated
+    - Simplifications on the approval, at the request of the Graduate Office.
+
 ## [4.2.1] - 2025-06-05
 
 ### Updated
