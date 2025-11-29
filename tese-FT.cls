@@ -3,25 +3,29 @@
 % template applies only for School of Technology at University 
 % of Campinas, Brazil.
 %
-% Este é a classe de documentos Latex para teses de doutorado e 
-% dissertações de mestrado da Faculdade de Tecnologia (FT) da 
-% Universidade Estadual de Campinas (UNICAMP).
+% Este é um modelo Latex para monografias de Trabalhos de Conclusão 
+% de Curso (TCC) na graduação, monografias de Mestrado e Teses de 
+% doutorado da Faculdade de Tecnologia (FT) da Universidade 
+% Estadual de Campinas (UNICAMP).
 %
-% Este arquivo de classe de documento e seu respectivo modelo 
+% Esse modelo e seu respectivo arquivo de classe de documento 
 % foram adaptados do modelo de teses e dissertações do 
 % Instituto de Computação da UNICAMP e estão de acordo com a 
-% Instrução Normativa CPG 002/2021.
+% Instrução Normativa CCPG Nº 06/2025.
 %
 % Autor: André Leon Sampaio Gradvohl, Dr.
 % Email:     gradvohl@unicamp.br
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 10/julho/2025.
+% Última versão: 25/novembro/2025.
 %
 % Adições/Alterações nesta última versão:
-% - Ajustes na folha de aprovação.
-%   - Simplificações na folha de aprovação por solicitação da Pró-reitoria de Pós-graduação
+% - Ajustes para conformidade com a Instrução Normativa 
+%   CCPG nº 06/2025, de 12 de novembro de 2025
+% - Adição de comandos específicos para flexibilizar o 
+%   modelo para outras universidades, unidades de ensino
+%   e programas de pós-graduação. 
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
@@ -110,6 +114,11 @@
 \RequirePackage{geometry}
 \geometry{a4paper,top=30mm,bottom=20mm,left=30mm,right=20mm}
 \RequirePackage{csquotes}
+% Pacote para redefinir o formato dos títulos dos capítulos
+\RequirePackage{titlesec}
+    \titleformat{\chapter}[display]
+        {\normalfont\huge\bfseries\centering}{\chaptertitlename\ \thechapter}{5pt}{\huge}
+    \titlespacing*{\chapter}{0pt}{20pt}{3em}
 % Pacotes para adicionar a bibliografia
 % Coloque a opção uniquename=false, se não quiser que o Biblatex faça a desambiguação de nomes.
 \RequirePackage[style=abnt,uniquename=init,giveninits,uniquelist=true,maxbibnames=4,repeatfields=true,justify]{biblatex}
@@ -122,7 +131,6 @@
 \renewcommand{\arraystretch}{1.2}
 
 \RequirePackage{ifthen}
-
 \ifcase\@thesislanguage\relax
   %English
   \RequirePackage[english,nameinlink]{cleveref}
@@ -134,13 +142,42 @@
   \Crefformat{equation}{#2\Cref@equation@name~#1#3}
   \creflabelformat{equation}{#2\textup{#1}#3}
 %
-% Definição de novos comandos
-\newcommand{\@CIDADE}{Limeira}
-\newcommand{\@UNIDADEENSINO}{Faculdade de Tecnologia}
-\newcommand{\@UNIDADEENSINOABREV}{FT}
-\newcommand{\@UNICAMP}{Universidade Estadual de Campinas}
-%
 % Criação de variáveis para o texto.
+%% Definição da instituição
+\let\@INSTITUICAO\relax
+\let\@INSTITUICAOABREV\relax
+\def\instituicao#1#2{\gdef\@INSTITUICAO{#1}\gdef\@INSTITUICAOABREV{#2}}
+% 
+% Definição do logo da Instituição
+\let\@LOGOINSTITUICAO\relax
+\def\logoInstituicao#1{\gdef\@LOGOINSTITUICAO{#1}}
+%
+% Definição do logo da Unidade de Enisno
+\let\@LOGOUNIDADE\relax
+\def\logoUnidadeEnsino#1{\gdef\@LOGOUNIDADE{#1}}
+%
+%% Definição da Unidade de Ensino
+\let\@UNIDADEENSINO\relax
+\let\@UNIDADEENSINOABREV\relax
+\def\unidadeEnsino#1#2{\gdef\@UNIDADEENSINO{#1}\gdef\@UNIDADEENSINOABREV{#2}}
+%
+%% Definição da Cidade
+\let\@CIDADE\relax
+\def\cidade#1{\gdef\@CIDADE{#1}}
+%
+% Definição do programa de pós-graduação
+\let\@PROGRAMAPOSGRADUACAO\relax
+\def\programaPosGraduacao#1{\gdef\@PROGRAMAPOSGRADUACAO{#1}}
+%
+% Definição da cotutela
+\let\@cotutela\relax
+\def\cotutela#1{\gdef\@cotutela{#1}}
+%
+% Definição da area de concentração
+\let\@areaConcentracao\relax
+\def\areaConcentracao#1{\gdef\@areaConcentracao{#1}}
+
+%
 \let\@autor\relax
 \def\autor#1{\gdef\@autor{#1}}
 \author{\@autor}
@@ -198,7 +235,6 @@
 }
 %%%%
 \gdef\qualificacaoMestrado{
-%added 
   \gdef\@textoaviso{\clearpage}
   \if\@autora\relax
   \gdef\@degnamept{Mestre em Tecnologia}
@@ -217,7 +253,6 @@
 }
 %%%%
 \gdef\qualificacaoDoutorado{
-%added 
   \gdef\@textoaviso{\clearpage}
   \if\@autora\relax
   \gdef\@degnamept{Doutor em Tecnologia}
@@ -320,12 +355,6 @@
 \def\avaliadorG#1#2{\gdef\@avalG{#1}\gdef\@instavalG{#2}}
 \def\avaliadorH#1#2{\gdef\@avalH{#1}\gdef\@instavalH{#2}}
 
-\let\@cotutela\relax
-\def\cotutela#1{\gdef\@cotutela{#1}}
-
-\let\@areaConcentracao\relax
-\def\areaConcentracao#1{\gdef\@areaConcentracao{#1}}
-
 \def\paginasiniciais{
   \newlength{\oldparindent}
   \setlength{\oldparindent}{\parindent}
@@ -341,7 +370,7 @@
     pdfcreator   = {Criado com o modelo para teses e dissertações da FT, elaborado pelo prof. André Leon S. Gradvohl, Dr.},
     pdftitle     = {\@titulo},
     pdfauthor    = {\if\@autora\relax\@autor\else\@autora\fi},
-    pdfsubject   = {\@monopt\xspace apresentada à Faculdade de Tecnologia da Universidade Estadual de Campinas como parte dos requisitos para a obtenção do título de \@degnamept\xspace.}
+    pdfsubject   = {\@monopt\xspace apresentada à \@UNIDADEENSINO\xspace da \@INSTITUICAO\xspace como parte dos requisitos para a obtenção do título de \@degnamept\xspace.}
   }
   
   \makeatother
@@ -357,11 +386,11 @@
   %Definição de títulos específicos, dependendo do idioma
   \ifcase\@thesislanguage\relax
   %English
-  \renewcommand{\nomname}{List of Acronyms}
+  \renewcommand{\nomname}{\centerline{List of Acronyms}}
   \or%Español
-  \renewcommand{\nomname}{Lista de abreviaturas y acrónimos}
+  \renewcommand{\nomname}{\centerline{Lista de abreviaturas y acrónimos}}
   \or%Português 
-  \renewcommand{\nomname}{Lista de Abreviaturas e Siglas}
+  \renewcommand{\nomname}{\centerline{Lista de Abreviaturas e Siglas}}
   \fi
 %}
 
@@ -376,34 +405,45 @@
   \resetlang
 }
 
-
 \def\logos{
-    {\parbox[c]{0cm}{\includegraphics[width=2.2cm]{logo-unicamp.pdf}}}
-       {\parbox[c]{\textwidth}
-       {
-         \noindent
-         \centering{
-           \large \MakeUppercase{\@UNICAMP}\\
-                   \@UNIDADEENSINO}
-       }
-    }
+    \begin{center}
+        \setlength{\tabcolsep}{0pt}
+        \begin{tabular}{>{\raggedleft}m{2.5cm}>{\centering}m{\dimexpr\textwidth - 6cm\relax}>{\raggedright}m{2.5cm}}
+            %%% Coluna da esquerda
+            \includegraphics[width=.92\linewidth]{\@LOGOINSTITUICAO}&
+            %%% Coluna do meio
+            \phantom{Espaço vazio -- Não remova essa linha} &%
+            %%% Coluna da direita
+            \ifx\@LOGOUNIDADE\relax 
+            % Se o logo não foi informado ignore
+            \else
+                \includegraphics[width=\linewidth]{\@LOGOUNIDADE}%{logotipos/logo-ft.pdf} %
+            \fi
+        \end{tabular}
+  \end{center}
 }
 
 \def\openningpage{
   \logos
-  \vskip 70mm%35mm
+  \vskip 25mm
   \begin{center}
-    \Large
-    {\bf \if\@autora\relax\@autor\else\@autora\fi}
+    \large
+        \MakeUppercase{\@INSTITUICAO}\xspace (\@INSTITUICAOABREV) \\[1.5pt]
+        \MakeUppercase{\@UNIDADEENSINO}\xspace (\@UNIDADEENSINOABREV) \\[1.5pt]
+        \IfStrEq{\@nivelEnsino}{Pós-graduação}{\MakeUppercase{\@PROGRAMAPOSGRADUACAO}}
+        
+  \vskip 35mm%35mm
+
+    {\if\@autora\relax\@autor\else\@autora\fi}
     \vskip 25mm
     \ifcase\@thesislanguage
-      {\bf\@title}
+      {\@title}
       \vskip 25mm
     \or
-      {\bf\@title}
+      {\@title}
       \vskip 25mm
     \fi
-    {\bf \@titulo}
+    { \@titulo}
     \vfill
     \large
     \@CIDADE\\\@ano
@@ -412,7 +452,7 @@
 
 
 \def\titlepage{
-  \large\bf
+  \large
   \vfill
   \begin{center}
     \if\@autora\relax\@autor\else\@autora\fi
@@ -431,14 +471,14 @@
   \normalsize
   \hfill\begin{minipage}[t]{0.54\textwidth}
     \supresshyphen
-    \@monopt\xspace apresentada à Faculdade de Tecnologia da Universidade Estadual de Campinas como parte dos requisitos para a obtenção do título de \@degnamept\xspace \ifx\@areaConcentracao\relax\else, na área de  \@areaConcentracao\fi \ifx\@cotutela\relax\else\xspace, no âmbito do acordo de Cotutela firmado entre a Unicamp e a \@cotutela\fi.
+    \@monopt\xspace apresentada à \@UNIDADEENSINO\xspace da \@INSTITUICAO\xspace como parte dos requisitos para a obtenção do título de \@degnamept\xspace \ifx\@areaConcentracao\relax\else, na área de  \@areaConcentracao\fi \ifx\@cotutela\relax\else\xspace, no âmbito do acordo de Cotutela firmado entre a Unicamp e a \@cotutela\fi.
   \end{minipage}
   \ifcase\@thesislanguage
     \vskip 8mm
     \hfill\begin{minipage}[t]{0.54\textwidth}
       \supresshyphen
-      \@monoen\xspace presented to the School of Technology of the
-      University of Campinas in partial fulfillment of the requirements for
+      \@monoen\xspace presented to the \@UNIDADEENSINO\xspace of the
+      \@INSTITUICAO\xspace in partial fulfillment of the requirements for
       the degree of \@degnameen\xspace in Computer
       Science\ifx\@areaConcentracao\relax\else, in the area of 
       \IfStrEqCase{\@areaConcentracao}{{Sistemas de Informação e Comunicação}{Computing and Communication Systems}%
@@ -465,38 +505,37 @@
   \fi
   \vfill
   \ifcase\@thesislanguage
-    {\bf Supervisor/}\hspace{-0.9ex}
+    {Supervisor/}\hspace{-0.9ex}
   \or
-    \if\@orientadora\relax {\bf Director/}\else {\bf Directora/}\fi\hspace{-0.9ex}
+    \if\@orientadora\relax {Director/}\else {Directora/}\fi\hspace{-0.9ex}
   \fi
-  \if\@orientadora\relax {\bf Orientador: \@orientador}
-  \else {\bf Orientadora: \@orientadora}
+  \if\@orientadora\relax {Orientador: \@orientador}
+  \else {Orientadora: \@orientadora}
   \fi
   \ifnum\@advisors=2
     \\
     \ifcase\@thesislanguage
-      {\bf Co-supervisor/}\hspace{-0.7ex}
+      {Co-supervisor/}\hspace{-0.7ex}
     \or
-      \if\@coorientadora\relax {\bf Co-director/}\else {\bf Co-directora/}\fi\hspace{-0.7ex}
+      \if\@coorientadora\relax {Co-director/}\else {Co-directora/}\fi\hspace{-0.7ex}
     \fi
-    \if\@coorientadora\relax {\bf Coorientador: \@coorientador}
-    \else {\bf Coorientadora: \@coorientadora}
+    \if\@coorientadora\relax {Coorientador: \@coorientador}
+    \else {Coorientadora: \@coorientadora}
     \fi
   \fi
   \vfill
   \iffinalversion
-    \begin{minipage}[t]{0.5\textwidth}
       \supresshyphen
-      Este trabalho corresponde à versão final da \@monopt\xspace defendida por
-      \if\@autora\relax\@autor\else\@autora\fi\xspace e orientada
-      \if\@orientadora\relax pelo \@orientador\else pela \@orientadora\fi.
-    \end{minipage}
+      \IfStrEq{\@monopt}{Monografia de qualificação}{}%
+      {%
+        \MakeUppercase{Este trabalho corresponde à versão final da \@monopt\xspace defendida.}%
+      }
   \else
-    \begin{minipage}[t]{0.5\textwidth}
       \supresshyphen
-      Este exemplar corresponde à versão da \@monopt\xspace entregue
-      à banca antes da defesa.
-    \end{minipage}
+      \IfStrEq{\@monopt}{Monografia de qualificação}{}%
+      {%
+       \MakeUppercase{Este exemplar corresponde à versão da \@monopt\xspace entregue à banca antes da defesa.}%
+      }
   \fi
   \vfill
   \begin{center}
@@ -508,8 +547,7 @@
 \def\cathpage{
   \ifx\@fichacatalografica\relax
   \newpage
-  Na versão final, esta página será substituída pela
-  ficha catalográfica no TCC, na dissertação de mestrado ou na
+  Na versão final, esta página será substituída pela ficha catalográfica no TCC, na dissertação de mestrado ou na
   tese de doutorado.
   
   \phantom{linha em branco}
@@ -536,50 +574,41 @@
 
 \def\approvalpage{
   \iffinalversion
-    %\noindent\centerline{\large\MakeUppercase{\textbf{Folha de Aprovação}}}
-    %\vskip 20mm
-    \vspace*{5cm}
+    \noindent\centerline{\huge\textbf{Folha de Aprovação}}
+    \vskip 20mm
+    \noindent\centerline{\MakeUppercase{\if\@autora\relax\@autor\else\@autora\fi}}
+    \vspace*{2cm}
     
-    
-    % Abaixo se apresentam os membros da comissão julgadora da % <-- Deixe esse espaço antes do %
-    % \IfStrEq{\@nivelEnsino}{Pós-graduação}{sessão pública de defesa de \xspace}{}%
-    % \MakeLowercase{\@monopt} para o título de \@degnamept\xspace 
-    % \IfStrEq{\@nivelEnsino}{Pós-graduação}{na área de concentração \@areaConcentracao,}
-    % a que se submeteu \@artigo\xspace candidat\@artigo\xspace \if\@autora\relax\@autor\else\@autora\fi, em \@dia\xspace de \ifcase \@mes \or janeiro\or fevereiro\or março\or abril\or maio\or junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de \@ano\xspace na %Faculdade de Tecnologia -- FT/UNICAMP
-    % \@UNIDADEENSINO{} -- \@UNIDADEENSINOABREV/UNICAMP, em \@CIDADE/SP.
+    \@monopt\xspace apresentada ao \@PROGRAMAPOSGRADUACAO, defendida na data de \@dia/\@mes/\@ano.
 
-    %\vfill
+    \vspace*{3em}
+
+    Composição da Comissão Examinadora:
+    \vspace*{3em}
 
     \ifx\@avalA\relax
     \else
-       \noindent \textbf{\@avalA}\newline 
+       \noindent \@avalA\newline 
        \noindent Presidente da Comissão Julgadora \vspace*{3em}%\@instavalA 
        
-       \ifx\@avalB\relax\else \noindent \textbf{\@avalB}\newline\@instavalB\vspace*{3em}\fi
+       \ifx\@avalB\relax\else \noindent \@avalB\newline\@instavalB\vspace*{3em}\fi
        
-       \ifx\@avalC\relax\else \noindent \textbf{\@avalC}\newline\@instavalC\vspace*{3em}\fi
+       \ifx\@avalC\relax\else \noindent \@avalC\newline\@instavalC\vspace*{3em}\fi
        
-       \ifx\@avalD\relax\else \noindent \textbf{\@avalD}\newline\@instavalD\vspace*{3em}\fi
+       \ifx\@avalD\relax\else \noindent \@avalD\newline\@instavalD\vspace*{3em}\fi
        
-       \ifx\@avalE\relax\else \noindent \textbf{\@avalE}\newline\@instavalE\vspace*{3em}\fi
+       \ifx\@avalE\relax\else \noindent \@avalE\newline\@instavalE\vspace*{3em}\fi
        
-       \ifx\@avalF\relax\else \noindent \textbf{\@avalF}\newline\@instavalF\fi
+       \ifx\@avalF\relax\else \noindent \@avalF\newline\@instavalF\fi
     \fi
-
     \vspace*{\fill}
-    %\vfill
-    
-      \supresshyphen
-      \noindent
-       Ata da defesa, assinada pelos membros da Comissão Examinadora, encontra-se no SIGA/Sistema de Fluxo de Dissertação/Tese e na Secretaria de \@nivelEnsino\xspace da \@UNIDADEENSINO.
-    \vfill
   \else
-    Na versão final, esta página será substituída por outra informando a composição da banca e que a ata de defesa está arquivada pela \@UNICAMP.
+    Na versão final, esta página será substituída por outra informando a composição da banca e que a ata de defesa está arquivada pela \@INSTITUICAO.
   \fi
 }
 
 \def\prefacesection#1{
-  \chapter*{#1}
+  \chapter*{\centering #1}
   %\addcontentsline{toc}{chapter}{#1}
   \pagestyle{empty}
   \thispagestyle{empty}
@@ -604,10 +633,6 @@
 \newenvironment{resumo}{\prefacesection{Resumo}\selectlanguage{brazil}}{\resetlang \newpage}
 \renewenvironment{abstract}{\prefacesection{Abstract}\selectlanguage{english}}{\resetlang \newpage}
 \newenvironment{resumen}{\prefacesection{Resumen}\selectlanguage{spanish}}{\resetlang \newpage}
-
-\newenvironment{epigrafeformat}{\newpage\mbox{}\vfill\hfill\begin{minipage}[t]{0.5\textwidth}} % Fim do bloco BEGIN.
-                          {\end{minipage}\newpage}
-
 
 \newcommand{\fimdaspaginasiniciais}{
 \newpage
@@ -647,25 +672,20 @@
     \else
       \pagestyle{empty}
       \thispagestyle{empty}
-      \vspace*{\fill}
-      \begin{flushright}
-         \begin{minipage}{15em}
-            #1
-         \end{minipage}
-       \end{flushright}
+      \prefacesection{Dedicatória}
+      
+      #1
+    
     \fi
 } % Fim definição comando \dedicatoria
 
-\newcommand{\epigrafe}[2]{
+\newcommand{\epigrafe}[1]{
   \ifturnitin 
       \relax
   \else
-     \begin{epigrafeformat}
-       #2
-       % A linha em branco a seguir é importante
-
-       \hfill (#1)
-     \end{epigrafeformat}
+     \pagestyle{empty} \thispagestyle{empty}
+     \prefacesection{Epígrafe}
+      #1
    \fi
 }
 

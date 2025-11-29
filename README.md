@@ -5,18 +5,18 @@ Este é um modelo LaTeX para monografias de Trabalhos de Conclusão de Curso (TC
 
 Esse modelo e seu respectivo arquivo de classe de documento foram adaptados do modelo de teses e dissertações do Instituto de Computação da UNICAMP.
 
-A utilização desse modelo é livre e está de acordo com a última versão das **Normas sobre o formato das dissertações de mestrado e teses de doutorado da UNICAMP (Instrução Normativa CPG 002/2021)**.
+A utilização desse modelo é livre e está de acordo com a última versão das **Normas sobre o formato das dissertações de mestrado e teses de doutorado da UNICAMP (Instrução Normativa CCPG nº 06/2025, de 12 de novembro de 2025)**.
 
 Você também poderá utilizar esse modelo diretamente no [Overleaf](https://www.overleaf.com), um site que permite a edição de textos no LaTeX de forma bem prática.
 
-O modelo no site Overleaf está disponível em neste [link](https://pt.overleaf.com/latex/templates/template-para-teses-e-dissertacoes-na-ft-slash-unicamp/rhznqbkjvpcr) ou procure por **Template para teses e dissertações na FT/UNICAMP**. Verifique se está na última versão (10/Julho/2025).
+O modelo no site Overleaf está disponível em neste [link](https://pt.overleaf.com/latex/templates/template-para-teses-e-dissertacoes-na-ft-slash-unicamp/rhznqbkjvpcr) ou procure por **Template para teses e dissertações na FT/UNICAMP**. Verifique se está na última versão (25/Novembro/2025).
 
 ## Arquivos que você vai utilizar
 :no_entry_sign: Você **não** deve mexer no arquivo ``tese-FT.cls``. Nele estão os comandos para a devida formatação do texto.
 
 Os arquivos que você deve utilizar são os seguintes:
 1. *``tese.tex``*: Arquivo com o módulo principal do seu texto. Nele você vai definir o título do texto, nome do autor, nome dos membros da banca, tipo de texto e uma série de outras informações gerais. Está tudo explicado nos comentários no arquivo (linhas que começam com %).
-2. *``bibliografia.bib``*: Arquivo com as referências bibliográficas, cuja compilação é feita com o programa `biber` ou `natbib`. O arquivo com as referências bibliográficas deve serguir um formato específico. Veja mais informações no [Guia rápido](https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX) ou detalhes específicos no [Biblatex Cheat Sheet](http://tug.ctan.org/info/biblatex-cheatsheet/biblatex-cheatsheet.pdf).
+2. *``bibliografia.bib``*: Arquivo com as referências bibliográficas, cuja compilação é feita com o programa `biber` ou `natbib`. O arquivo com as referências bibliográficas deve seguir um formato específico. Veja mais informações no [Guia rápido](https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX) ou detalhes específicos no [Biblatex Cheat Sheet](http://tug.ctan.org/info/biblatex-cheatsheet/biblatex-cheatsheet.pdf).
 3. Todos os arquivos .tex podem ser utilizados normalmente. Nesse modelo, cada capítulo ficou em um arquivo diferente. Isso acelera a compilação e permite uma melhor organização dos tópicos.
 
 Observe que existe um diretório **``figuras``**. Nele você pode adicionar todas as figuras do seu texto. Para uma compilação mais rápida, sugere-se que as figuras estejam no formato `.pdf`. Mas, você pode usar `.png`, `.jpg` ou `.eps`.
@@ -55,7 +55,7 @@ Lattes CV:    http://lattes.cnpq.br/9343261628675642
 
 ORCID: [0000-0002-6520-9740](https://orcid.org/0000-0002-6520-9740)
 
-Última versão: 10/Julho/2025
+Última versão: 25/Novembro/2025
 
 Esse software está em um repositório indexado pelo Zenodo e pode ser acessado com o DOI a seguir 
 

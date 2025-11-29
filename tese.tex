@@ -11,18 +11,21 @@
 % Esse modelo e seu respectivo arquivo de classe de documento 
 % foram adaptados do modelo de teses e dissertações do 
 % Instituto de Computação da UNICAMP e estão de acordo com a 
-% Instrução Normativa CPG 002/2021.
+% Instrução Normativa CCPG Nº 06/2025.
 %
 % Autor: André Leon Sampaio Gradvohl, Dr.
 % Email:     gradvohl@unicamp.br
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 10/julho/2025.
+% Última versão: 25/novembro/2025.
 %
 % Adições/Alterações nesta última versão:
-% - Ajustes na folha de aprovação.
-%   - Simplificações na folha de aprovação por solicitação da Pró-reitoria de Pós-graduação
+% - Ajustes para conformidade com a Instrução Normativa 
+%   CCPG nº 06/2025, de 12 de novembro de 2025
+% - Adição de comandos específicos para flexibilizar o 
+%   modelo para outras universidades, unidades de ensino
+%   e programas de pós-graduação. 
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -55,6 +58,37 @@
 \usepackage{lipsum}
 
 \begin{document}
+% Defina o nome da instituição e a sigla
+\instituicao{Universidade Estadual de Campinas}{UNICAMP}
+% Informe o arquivo com o logotipo da sua instituição. Não esqueça de 
+% copiar o arquivo antes, preferencialmente para o diretorio (pasta)
+% "logotipos".
+\logoInstituicao{logo-unicamp.pdf}
+%
+% Defina o nome da unidade de ensino e a sigla
+\unidadeEnsino{Faculdade de Tecnologia}{FT}
+% Informe o arquivo com o logotipo da sua unidade de ensino. 
+% Não esqueça de copiar o arquivo antes, preferencialmente 
+% para o diretorio (pasta) "logotipos". Deixe o comando 
+% comentado se não quiser incluir o logotipo da unidade 
+% de ensino.
+\logoUnidadeEnsino{logo-ft.pdf}
+%
+% Defina a Cidade
+\cidade{Limeira}
+% 
+% Defina o nome do programa de Pós-graduação ou, se for TCC,   
+% substitua pelo nome do seu curso. Por exemplo, "Curso de 
+% Bacharelado em Sistemas de Informação" (sem aspas).
+\programaPosGraduacao{Programa de Pós-graduação em Tecnologia}
+%
+%Defina a área de concentração. Se for TCC, deixe comentado.
+\areaConcentracao{Sistemas de Informação e Comunicação}
+%\areaConcentracao{Ambiente}
+%\areaConcentracao{Ciência dos Materiais}
+
+% Se houve cotutela, defina:
+%\cotutela{Universidade Nova de Plutão}
 
 % Escolha entre autor ou autora:
 \autor{Nome do autor}
@@ -83,18 +117,10 @@
 \mestrado   % para Dissertação de Mestrado em Tecnologia
 %\doutorado  % para Tese de Doutorado em Tecnologia
 
-%Defina a área de concentração. Se for TCC, deixe comentado.
-\areaConcentracao{Sistemas de Informação e Comunicação}
-%\areaConcentracao{Ambiente}
-%\areaConcentracao{Ciência dos Materiais}
-
-% Se houve cotutela, defina:
-%\cotutela{Universidade Nova de Plutão}
-
 % Defina a data da defesa no formato {Dia}{Mês}{Ano}
 % Use apenas números! O template transformará em palavras,
 % se necessário.
-\datadadefesa{20}{5}{2025}
+\datadadefesa{25}{11}{2025}
 
 % Para a versão final defina:
 % Repita o nome do Orientador(a) no primeiro avaliador
@@ -124,22 +150,6 @@
 % Este comando deve ficar aqui:
 \paginasiniciais
 
-% Se houver uma dedicatória, informe no comando a seguir. 
-% A dedicatória deve ter poucas linhas.
- %\dedicatoria{A dedicatória deve ocupar poucas linhas.}
- 
-% Se houver epígrafe, use o comando \epigrafe a seguir
-%   - O primeiro parâmetro é o autor dos dizeres.
-%   - O segundo parâmetro são os dizeres.
-% \epigrafe{Hippocrates}{
-% {\it
-% Vita brevis,\\
-% ars longa,\\
-% occasio praeceps,\\
-% experimentum periculosum,\\
-% iudicium difficile.}
-% }
-
 % O comando condicional \ifturnitin a seguir é importante para 
 % preparar o texto para encaminhamento ao Turnitin. 
 % NÃO REMOVA!!
@@ -147,34 +157,19 @@
 \ifturnitin
    \relax 
 \else
-% Adicione no arquivo "agradecimentos.tex" os seus agradecimentos
-% Caso prefira omitir os agradecimentos, comente a linha a seguir.
+% Para adicionar a Dedicatória, os Agradecimentos (obrigatório) e a 
+% Epígrafe, faça as devidas alterações no arquivo agradecimentos.tex.
 \input{agradecimentos}
-
-% Sempre deve haver um resumo em português:
-\begin{resumo}
-O resumo deve ter no máximo 500 palavras e deve ocupar uma única página.
-\end{resumo}
-
-% Sempre deve haver um abstract:
-\begin{abstract}
-The abstract must have at most 500 words and must fit in a single page.
-\end{abstract}
-
-% Se houver um resumo em espanhol, descomente as linhas a seguir:
-%\begin{resumen}
-% A mesma regra aplica-se.
-%\end{resumen}
-
+%
+% Adicione no arquivo "resumo.tex" os resumos em portugês e inglês 
+% (adicione também o resumo em espanhol, se necessário.
+\input{resumo}
+%
 % A lista de figuras:
 \listoffigures
 
 % A lista de tabelas:
 \listoftables
-
-% A lista de símbolos é opcional. Não confunda a lista de símbolos 
-% matemáticos com a lista de abreviaturas (que vem depois).
-\input{listaSimbolos}
 
 % A lista de abreviações e siglas vem a seguir.
 % Dê uma olhada no pacote nomencl para ver os comandos para 
@@ -184,6 +179,10 @@ The abstract must have at most 500 words and must fit in a single page.
 % diretamente no texto e criar a lisa de abreviaturas 
 % automaticamente
 \printnomenclature[3cm]
+
+% A lista de símbolos é opcional. Não confunda a lista de símbolos 
+% matemáticos com a lista de abreviaturas (que vem depois).
+\input{listaSimbolos}
 
 % O sumário vem aqui:
 \tableofcontents

@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Changes are recorded from since version 4.1.0
 
+## [5.0.0] - 2025-25-11
+
+### Updated
+    - Updated formatting to comply with the new resolution "Instrução Normativa CCPG no. 06/2025, de 12 de novembro de 2025".
+    - Repositioning of the content of the abstracts, acknowledgments, dedication, and epigraph.
+
+### Added
+    - Addition of the following commands to facilitate adaptation to other universities, departments, or graduate program:
+        -- \instituicao{Nome da Universidade por Extenso}{Sigla}
+        -- \logoInstituicao{logotipo.pdf}
+        -- \unidadeEnsino{Nome da Unidade de Ensino ou Departamento}{Sigla}
+        -- \logoUnidadeEnsino{logotipo.pdf}
+        -- \programaPosGraduacao{Nome do Programa de Pós-Graduação}
+        -- \cidade{Cidade}
+    
 ## [4.2.2] - 2025-07-10
 
 ### Updated
