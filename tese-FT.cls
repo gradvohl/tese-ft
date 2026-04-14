@@ -18,14 +18,11 @@
 % Lattes CV: http://lattes.cnpq.br/9343261628675642
 % ORCID:     0000-0002-6520-9740
 % 
-% Última versão: 25/novembro/2025.
+% Última versão: 14/abril/2026.
 %
 % Adições/Alterações nesta última versão:
 % - Ajustes para conformidade com a Instrução Normativa 
 %   CCPG nº 06/2025, de 12 de novembro de 2025
-% - Adição de comandos específicos para flexibilizar o 
-%   modelo para outras universidades, unidades de ensino
-%   e programas de pós-graduação. 
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
@@ -471,14 +468,14 @@
   \normalsize
   \hfill\begin{minipage}[t]{0.54\textwidth}
     \supresshyphen
-    \@monopt\xspace apresentada à \@UNIDADEENSINO\xspace da \@INSTITUICAO\xspace como parte dos requisitos para a obtenção do título de \@degnamept\xspace \ifx\@areaConcentracao\relax\else, na área de  \@areaConcentracao\fi \ifx\@cotutela\relax\else\xspace, no âmbito do acordo de Cotutela firmado entre a Unicamp e a \@cotutela\fi.
+    \@monopt\xspace apresentada à \@UNIDADEENSINO\xspace da \@INSTITUICAO\xspace (\@INSTITUICAOABREV) como parte dos requisitos para a obtenção do título de \@degnamept\xspace \ifx\@areaConcentracao\relax\else, na área de  \@areaConcentracao\fi \ifx\@cotutela\relax\else\xspace, no âmbito do acordo de Cotutela firmado entre a Unicamp e a \@cotutela\fi.
   \end{minipage}
   \ifcase\@thesislanguage
     \vskip 8mm
     \hfill\begin{minipage}[t]{0.54\textwidth}
       \supresshyphen
       \@monoen\xspace presented to the \@UNIDADEENSINO\xspace of the
-      \@INSTITUICAO\xspace in partial fulfillment of the requirements for
+      \@INSTITUICAO\xspace (\@INSTITUICAOABREV) in partial fulfillment of the requirements for
       the degree of \@degnameen\xspace in Computer
       Science\ifx\@areaConcentracao\relax\else, in the area of 
       \IfStrEqCase{\@areaConcentracao}{{Sistemas de Informação e Comunicação}{Computing and Communication Systems}%
@@ -538,10 +535,10 @@
       }
   \fi
   \vfill
-  \begin{center}
-    \large
-    \@CIDADE\\ \@ano
-  \end{center}
+  % \begin{center}
+  %   \large
+  %   \@CIDADE\\ \@ano
+  % \end{center}
 }
 
 \def\cathpage{
