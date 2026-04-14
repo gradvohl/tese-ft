@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Changes are recorded from since version 4.1.0
 
+## [5.0.1] - 2026-04-14
+
+### Updated
+    - Updated formatting to comply with the new resolution "Instrução Normativa CCPG no. 06/2025, de 12 de novembro de 2025".
+
 ## [5.0.0] - 2025-25-11
 
 ### Updated
